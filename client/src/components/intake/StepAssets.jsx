@@ -2,7 +2,7 @@ import { useState } from 'react'
 import StepShell from './StepShell'
 import { ASSET_OPTIONS, TRANSFER_OPTIONS } from '../../intakeOptions'
 
-export default function StepAssets({ answers, onUpdate, onSubmit, onBack, submitting }) {
+export default function StepAssets({ answers, onSubmit, onBack, submitting }) {
   const [assets, setAssets] = useState(answers.assets)
   const [preDeathTransfers, setPreDeathTransfers] = useState(answers.preDeathTransfers)
 
@@ -15,8 +15,7 @@ export default function StepAssets({ answers, onUpdate, onSubmit, onBack, submit
   }
 
   function handleSubmit() {
-    onUpdate({ assets, preDeathTransfers })
-    onSubmit()
+    onSubmit({ assets, preDeathTransfers })
   }
 
   return (

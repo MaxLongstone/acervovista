@@ -93,8 +93,7 @@ export default function IntakePage({ onComplete }) {
     return (
       <StepAssets
         answers={answers}
-        onUpdate={(partial) => update(partial, false)}
-        onSubmit={() => submit({})}
+        onSubmit={(partial) => submit(partial)}
         onBack={back}
         submitting={submitting}
       />
