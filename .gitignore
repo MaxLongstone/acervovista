@@ -1,5 +1,7 @@
 node_modules/
 .env
+.DS_Store
+credentials/
 server/uploads/*
 !server/uploads/.gitkeep
 client/dist/
