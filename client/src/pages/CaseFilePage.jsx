@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { getCase, getGapMap, listDocuments } from '../api'
+import AssistantPanel from '../components/casefile/AssistantPanel'
+import HandoffCard from '../components/casefile/HandoffCard'
 import CaseSummaryCard from '../components/casefile/CaseSummaryCard'
 import DocumentCard from '../components/casefile/DocumentCard'
 import DocumentUpload from '../components/casefile/DocumentUpload'
@@ -7,6 +9,7 @@ import GapMap from '../components/casefile/GapMap'
 
 export default function CaseFilePage({ caseId }) {
   const [caseData, setCaseData] = useState(null)
+  const [assistantMeta, setAssistantMeta] = useState(null)
   const [error, setError] = useState(null)
   const [documents, setDocuments] = useState([])
   const [gapMap, setGapMap] = useState([])
@@ -14,7 +17,7 @@ export default function CaseFilePage({ caseId }) {
 
   useEffect(() => {
     getCase(caseId)
-      .then((data) =>
+      .then((data) => {
         setCaseData({
           decedentName: data.decedent_name,
           dateOfDeath: data.date_of_death,
@@ -31,7 +34,11 @@ export default function CaseFilePage({ caseId }) {
           preDeathTransfers: data.pre_death_transfers,
           complexity_flags: data.complexity_flags || [],
         })
-      )
+        setAssistantMeta({
+          turnsUsed: data.assistant_turns_used ?? 0,
+          cap: data.assistant_cap ?? 10,
+        })
+      })
       .catch(() => setError('Could not load your case file.'))
 
     listDocuments(caseId).then(setDocuments).catch(() => {})
@@ -98,6 +105,16 @@ export default function CaseFilePage({ caseId }) {
           )}
 
           <GapMap gapMap={gapMap} />
+
+          {assistantMeta && (
+            <AssistantPanel
+              caseId={caseId}
+              initialTurnsUsed={assistantMeta.turnsUsed}
+              cap={assistantMeta.cap}
+            />
+          )}
+
+          <HandoffCard caseId={caseId} />
         </div>
       </div>
     </>

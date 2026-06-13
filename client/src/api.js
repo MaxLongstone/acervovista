@@ -85,3 +85,25 @@ export async function getGapMap(caseId) {
   }
   return res.json()
 }
+
+export async function generateHandoff(caseId) {
+  const res = await fetch(`${API_BASE}/api/cases/${caseId}/handoff`, { method: 'POST' })
+  if (!res.ok) throw new Error('Failed to generate handoff')
+  return res.blob()
+}
+
+export async function askAssistant(caseId, message) {
+  const res = await fetch(`${API_BASE}/api/cases/${caseId}/assistant`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message }),
+  })
+  const data = await res.json()
+  if (!res.ok) {
+    const err = new Error(data.message || data.error || 'Assistant error')
+    err.status = res.status
+    err.data = data
+    throw err
+  }
+  return data
+}
