@@ -14,6 +14,7 @@ const UPLOADS_ROOT = path.join(__dirname, '..', 'uploads')
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'application/pdf']
 const MAX_FILE_SIZE = 20 * 1024 * 1024 // 20MB
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -42,6 +43,10 @@ const upload = multer({
 export const documentsRouter = express.Router()
 
 documentsRouter.post('/:id/documents', (req, res) => {
+  if (!UUID_RE.test(req.params.id)) {
+    return res.status(400).json({ error: 'Invalid case id' })
+  }
+
   upload.single('file')(req, res, async (err) => {
     if (err) {
       return res.status(400).json({ error: err.message })

@@ -1,6 +1,7 @@
 import express from 'express'
 import { pool } from '../db/pool.js'
 import { computeComplexityFlags } from '../lib/complexity.js'
+import { computeGapMap } from '../lib/gapMap.js'
 
 export const casesRouter = express.Router()
 
@@ -107,4 +108,29 @@ casesRouter.get('/:id', async (req, res) => {
     ...caseResult.rows[0],
     heirs: heirsResult.rows,
   })
+})
+
+casesRouter.get('/:id/gap-map', async (req, res) => {
+  const { id } = req.params
+
+  const caseResult = await pool.query(
+    'SELECT has_will, created_at FROM cases WHERE id = $1',
+    [id]
+  )
+  if (caseResult.rows.length === 0) {
+    return res.status(404).json({ error: 'Case not found' })
+  }
+
+  const documentsResult = await pool.query(
+    'SELECT document_type FROM documents WHERE case_id = $1',
+    [id]
+  )
+
+  const gapMap = computeGapMap({
+    hasWill: caseResult.rows[0].has_will,
+    createdAt: caseResult.rows[0].created_at,
+    documentTypes: documentsResult.rows.map((row) => row.document_type),
+  })
+
+  res.json(gapMap)
 })
