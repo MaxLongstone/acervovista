@@ -16,7 +16,9 @@ CREATE TABLE cases (
   assets              JSONB,
   pre_death_transfers TEXT,
   complexity_flags    JSONB,
-  intake_completed_at TIMESTAMPTZ
+  intake_completed_at TIMESTAMPTZ,
+  assistant_turns_used INTEGER DEFAULT 0,
+  assistant_cap        INTEGER DEFAULT 50
 );
 
 CREATE TABLE heirs (

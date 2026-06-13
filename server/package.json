@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --watch --env-file=../.env index.js",
-    "test": "node --test"
+    "test": "node --env-file=../.env --test"
   },
   "dependencies": {
     "cors": "^2.8.5",
