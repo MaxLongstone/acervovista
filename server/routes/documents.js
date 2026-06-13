@@ -12,7 +12,13 @@ import { DOCUMENT_TYPES, DOCUMENT_TYPE_LABELS } from '../lib/documentTypes.js'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const UPLOADS_ROOT = path.join(__dirname, '..', 'uploads')
 
-const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'application/pdf']
+const ALLOWED_MIME_TYPES = [
+  'image/jpeg',
+  'image/png',
+  'application/pdf',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+]
 const MAX_FILE_SIZE = 20 * 1024 * 1024 // 20MB
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 

@@ -1,7 +1,13 @@
 import { useRef, useState } from 'react'
 import { uploadDocument } from '../../api'
 
-const ACCEPTED_TYPES = ['image/jpeg', 'image/png', 'application/pdf']
+const ACCEPTED_TYPES = [
+  'image/jpeg',
+  'image/png',
+  'application/pdf',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+]
 const MAX_FILE_SIZE = 20 * 1024 * 1024 // 20MB
 
 export default function DocumentUpload({ caseId, onUploadComplete }) {
@@ -12,7 +18,7 @@ export default function DocumentUpload({ caseId, onUploadComplete }) {
   const handleFiles = (files) => {
     for (const file of Array.from(files)) {
       if (!ACCEPTED_TYPES.includes(file.type)) {
-        window.alert(`${file.name} isn't a supported file type. Please upload a JPG, PNG, or PDF.`)
+        window.alert(`${file.name} isn't a supported file type. Please upload a JPG, PNG, PDF, DOC, or DOCX.`)
         continue
       }
       if (file.size > MAX_FILE_SIZE) {
@@ -68,11 +74,11 @@ export default function DocumentUpload({ caseId, onUploadComplete }) {
         }`}
       >
         <p className="text-ink">Drag and drop a document here, or click to select a file</p>
-        <p className="text-sm text-ink mt-1">JPG, PNG, or PDF, up to 20MB</p>
+        <p className="text-sm text-ink mt-1">JPG, PNG, PDF, DOC, or DOCX, up to 20MB</p>
         <input
           ref={inputRef}
           type="file"
-          accept="image/jpeg,image/png,application/pdf"
+          accept="image/jpeg,image/png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
           multiple
           className="hidden"
           onChange={(event) => {
