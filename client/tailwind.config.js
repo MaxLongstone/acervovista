@@ -17,8 +17,23 @@ export default {
     extend: {
       colors,
       fontFamily: {
-        serif: ['"Playfair Display"', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        serif:   ['"Playfair Display"', 'Georgia', 'serif'],
+        sans:    ['Inter', 'system-ui', 'sans-serif'],
+        mono:    ['"JetBrains Mono"', 'monospace'],
+      },
+      borderRadius: {
+        sm:   '4px',
+        DEFAULT: '6px',
+        md:   '8px',
+        lg:   '12px',
+        full: '9999px',
+      },
+      transitionDuration: {
+        swift:  '150',
+        settle: '250',
+        unfurl: '400',
+        page:   '300',
       },
     },
   },

@@ -2,6 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-white text-ink font-sans;
+/* ── Base surface ── */
+html, body {
+  @apply bg-parchment text-ink font-sans;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Motion tokens ── */
+:root {
+  --transition-swift:  150ms ease-out;
+  --transition-settle: 250ms ease-in-out;
+  --transition-unfurl: 400ms ease-in-out;
+  --transition-page:   300ms ease-in-out;
+}
+
+/* ── Unfurl: gap map item entrance ── */
+@keyframes unfurl {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-unfurl {
+  animation: unfurl var(--transition-unfurl) ease-in-out both;
+}
+
+/* ── Signature: document card stagger entrance ── */
+@keyframes signature {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-signature {
+  animation: signature 350ms ease-out both;
+}
+
+/* ── Page transition ── */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-page-enter {
+  animation: page-enter var(--transition-page) ease-in-out both;
+}
+
+/* ── Settle: panels, assistant, upload zone ── */
+@keyframes settle {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-settle {
+  animation: settle var(--transition-settle) ease-in-out both;
+}
+
+/* ── Swift interactive baseline ── */
+.interactive {
+  transition: background-color var(--transition-swift),
+              border-color     var(--transition-swift),
+              color            var(--transition-swift),
+              opacity          var(--transition-swift);
 }
