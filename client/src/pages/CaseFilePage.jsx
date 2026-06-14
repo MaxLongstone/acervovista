@@ -24,10 +24,11 @@ export default function CaseFilePage({ caseId }) {
           stateOfDomicile: data.state_of_domicile,
           maritalStatus: data.marital_status,
           spouseName: data.spouse_name,
-          heirs: data.heirs.map((heir) => ({
-            fullName: heir.full_name,
-            relationship: heir.relationship,
-            residence: heir.residence,
+          hasWill: data.has_will,
+          heirs: data.heirs.map((h) => ({
+            fullName: h.full_name,
+            relationship: h.relationship,
+            residence: h.residence,
           })),
           heirsInAgreement: data.heirs_in_agreement,
           assets: data.assets || [],
@@ -45,34 +46,30 @@ export default function CaseFilePage({ caseId }) {
     getGapMap(caseId).then(setGapMap).catch(() => {})
   }, [caseId])
 
-  const refreshGapMap = () => {
-    getGapMap(caseId).then(setGapMap).catch(() => {})
-  }
+  const refreshGapMap = () => getGapMap(caseId).then(setGapMap).catch(() => {})
 
-  const handleUploadComplete = (document) => {
-    setDocuments((prev) => [...prev, document])
+  const handleUploadComplete = (doc) => {
+    setDocuments((prev) => [...prev, doc])
     refreshGapMap()
   }
 
-  const handleDocumentTypeChange = (updatedDocument) => {
-    setDocuments((prev) =>
-      prev.map((doc) => (doc.id === updatedDocument.id ? updatedDocument : doc))
-    )
+  const handleDocumentTypeChange = (updated) => {
+    setDocuments((prev) => prev.map((d) => d.id === updated.id ? updated : d))
     refreshGapMap()
   }
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-red">{error}</p>
+      <div className="min-h-[calc(100vh-56px)] flex items-center justify-center bg-parchment">
+        <p className="text-ink-mid">{error}</p>
       </div>
     )
   }
 
   if (!caseData) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-ink">Loading your case file...</p>
+      <div className="min-h-[calc(100vh-56px)] flex items-center justify-center bg-parchment">
+        <p className="text-ink-light font-mono text-sm tracking-wide">Loading…</p>
       </div>
     )
   }
@@ -81,31 +78,47 @@ export default function CaseFilePage({ caseId }) {
     <>
       <CaseSummaryCard
         caseData={caseData}
-        onStartUploading={() =>
-          documentsRef.current?.scrollIntoView({ behavior: 'smooth' })
-        }
+        onStartUploading={() => documentsRef.current?.scrollIntoView({ behavior: 'smooth' })}
       />
-      <div ref={documentsRef} className="bg-gray px-4 py-8 flex justify-center">
-        <div className="max-w-xl w-full bg-white rounded-lg shadow-sm p-8 space-y-6">
-          <h1 className="font-serif text-2xl text-navy">Documents</h1>
 
-          <DocumentUpload caseId={caseId} onUploadComplete={handleUploadComplete} />
+      {/* Documents section */}
+      <div ref={documentsRef} className="bg-off-white px-4 py-12 flex justify-center">
+        <div className="max-w-xl w-full space-y-8">
 
+          {/* Section header */}
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-light mb-1">
+              Case · {caseId.slice(0, 8)}
+            </p>
+            <h2 className="font-display font-bold text-2xl text-navy">Documents</h2>
+          </div>
+
+          {/* Upload zone */}
+          <div className="bg-white border border-parchment-deep rounded-lg p-6">
+            <DocumentUpload caseId={caseId} onUploadComplete={handleUploadComplete} />
+          </div>
+
+          {/* Document cards — Signature stagger */}
           {documents.length > 0 && (
             <div className="space-y-3">
-              {documents.map((document) => (
+              {documents.map((doc, i) => (
                 <DocumentCard
-                  key={document.id}
+                  key={doc.id}
                   caseId={caseId}
-                  document={document}
+                  document={doc}
+                  index={i}
                   onDocumentTypeChange={handleDocumentTypeChange}
                 />
               ))}
             </div>
           )}
 
-          <GapMap gapMap={gapMap} />
+          {/* Gap map */}
+          <div className="bg-white border border-parchment-deep rounded-lg p-6">
+            <GapMap gapMap={gapMap} />
+          </div>
 
+          {/* Assistant */}
           {assistantMeta && (
             <AssistantPanel
               caseId={caseId}
@@ -114,7 +127,9 @@ export default function CaseFilePage({ caseId }) {
             />
           )}
 
+          {/* Handoff */}
           <HandoffCard caseId={caseId} />
+
         </div>
       </div>
     </>

@@ -4,22 +4,22 @@ const FOURTEEN_DAYS_MS = 14 * 24 * 60 * 60 * 1000
 
 const GAP_MAP_COPY = {
   death_certificate: {
-    why: 'Required to open probate and notify every institution involved in the estate.',
+    why: 'Required to begin estate administration and notify every institution involved.',
     where:
       'Florida Department of Health, Bureau of Vital Statistics, or the county health department where the death occurred. Order at least 5 certified copies.',
   },
   will: {
-    why: 'The court needs the original will to admit it to probate and determine how assets are distributed.',
+    why: 'The court needs the original will to accept it and determine how assets are distributed.',
     where:
       "Check with the decedent's attorney, their safe deposit box, or the clerk of court — wills are sometimes filed for safekeeping before death.",
   },
   letters_testamentary: {
     why: 'This court order gives the Personal Representative legal authority to act on behalf of the estate.',
     where:
-      'Issued by the Circuit Court after the will is admitted to probate. Your probate attorney files for these.',
+      'Issued by the Circuit Court after the will is accepted. Your estate attorney files for these.',
   },
   court_filing: {
-    why: 'The Petition for Administration formally opens the probate proceeding with the court.',
+    why: 'The Petition for Administration formally opens the estate case with the court.',
     where:
       'Filed by your attorney with the Circuit Court in the county where the decedent lived.',
   },
