@@ -2,6 +2,12 @@ import { useState } from 'react'
 import StepShell from './StepShell'
 import { AGREEMENT_OPTIONS } from '../../intakeOptions'
 
+const input = 'mt-1 w-full border border-parchment-deep rounded-md px-3 h-12 bg-white text-ink focus:outline-none focus:ring-1 focus:ring-navy transition-colors duration-150'
+const lbl = 'text-sm font-medium text-ink-mid'
+const choice = (active) =>
+  `text-left px-4 py-4 rounded-md border text-[15px] transition-colors duration-150
+   ${active ? 'border-navy bg-parchment font-medium text-navy' : 'border-parchment-deep text-ink hover:border-navy-light'}`
+
 const emptyHeir = { fullName: '', relationship: '', residence: '' }
 
 export default function StepHeirs({ answers, onNext, onBack }) {
@@ -11,90 +17,62 @@ export default function StepHeirs({ answers, onNext, onBack }) {
   const [heirsInAgreement, setHeirsInAgreement] = useState(answers.heirsInAgreement)
 
   const canContinue =
-    heirs.every((heir) => heir.fullName.trim() && heir.relationship.trim()) &&
-    heirsInAgreement
+    heirs.every((h) => h.fullName.trim() && h.relationship.trim()) && heirsInAgreement
 
-  function updateHeir(index, field, value) {
-    setHeirs((prev) =>
-      prev.map((heir, i) => (i === index ? { ...heir, [field]: value } : heir))
-    )
-  }
-
-  function addHeir() {
-    setHeirs((prev) => [...prev, { ...emptyHeir }])
-  }
-
-  function removeHeir(index) {
-    setHeirs((prev) => prev.filter((_, i) => i !== index))
-  }
+  const updateHeir = (i, field, val) =>
+    setHeirs((prev) => prev.map((h, idx) => idx === i ? { ...h, [field]: val } : h))
 
   return (
     <StepShell
       title="Who are the heirs?"
+      step={5}
       onBack={onBack}
       nextDisabled={!canContinue}
       onNext={() => onNext({ heirs, heirsInAgreement })}
     >
       <div className="space-y-4">
-        {heirs.map((heir, index) => (
-          <div key={index} className="border border-gray rounded p-3 space-y-2">
+        {heirs.map((heir, i) => (
+          <div key={i} className="border border-parchment-deep rounded-md p-4 space-y-3">
             <label className="block">
-              <span className="text-sm text-ink">Full name</span>
-              <input
-                type="text"
-                value={heir.fullName}
-                onChange={(e) => updateHeir(index, 'fullName', e.target.value)}
-                className="mt-1 w-full border border-gray rounded p-2"
-              />
+              <span className={lbl}>Full name</span>
+              <input type="text" value={heir.fullName}
+                onChange={(e) => updateHeir(i, 'fullName', e.target.value)}
+                className={input} />
             </label>
             <label className="block">
-              <span className="text-sm text-ink">Relationship to decedent</span>
-              <input
-                type="text"
-                value={heir.relationship}
-                onChange={(e) => updateHeir(index, 'relationship', e.target.value)}
-                className="mt-1 w-full border border-gray rounded p-2"
-              />
+              <span className={lbl}>Relationship to decedent</span>
+              <input type="text" value={heir.relationship}
+                onChange={(e) => updateHeir(i, 'relationship', e.target.value)}
+                className={input} />
             </label>
             <label className="block">
-              <span className="text-sm text-ink">State or country of residence</span>
-              <input
-                type="text"
-                value={heir.residence}
-                onChange={(e) => updateHeir(index, 'residence', e.target.value)}
-                className="mt-1 w-full border border-gray rounded p-2"
-              />
+              <span className={lbl}>State or country of residence</span>
+              <input type="text" value={heir.residence}
+                onChange={(e) => updateHeir(i, 'residence', e.target.value)}
+                className={input} />
             </label>
             {heirs.length > 1 && (
-              <button
-                type="button"
-                onClick={() => removeHeir(index)}
-                className="text-sm text-red underline"
-              >
+              <button type="button"
+                onClick={() => setHeirs((p) => p.filter((_, idx) => idx !== i))}
+                className="text-sm text-ink-mid hover:text-navy underline underline-offset-2 transition-colors duration-150">
                 Remove this heir
               </button>
             )}
           </div>
         ))}
-        <button type="button" onClick={addHeir} className="text-sm text-navy underline">
+        <button type="button"
+          onClick={() => setHeirs((p) => [...p, { ...emptyHeir }])}
+          className="text-sm text-navy underline underline-offset-2 hover:text-navy-mid transition-colors duration-150">
           + Add another heir
         </button>
       </div>
 
-      <div>
-        <span className="text-sm text-ink">Are all heirs in agreement about the estate?</span>
-        <div className="flex flex-col gap-3 mt-1">
-          {AGREEMENT_OPTIONS.map((option) => (
-            <button
-              key={option.value}
-              type="button"
-              onClick={() => setHeirsInAgreement(option.value)}
-              className={`text-left p-4 rounded border ${
-                heirsInAgreement === option.value ? 'border-navy bg-gray' : 'border-gray'
-              }`}
-            >
-              {option.label}
-            </button>
+      <div className="mt-2">
+        <span className={lbl}>Are all heirs in agreement about the estate?</span>
+        <div className="flex flex-col gap-3 mt-2">
+          {AGREEMENT_OPTIONS.map((o) => (
+            <button key={o.value} type="button" onClick={() => setHeirsInAgreement(o.value)}
+              className={choice(heirsInAgreement === o.value)}>{o.label}</button>
           ))}
         </div>
       </div>

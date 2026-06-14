@@ -1,0 +1,444 @@
+{
+  "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+  "startedAt": "2026-06-12T00:30:30.310Z",
+  "updatedAt": "2026-06-13T13:17:45.749Z",
+  "events": [
+    {
+      "ts": "2026-06-12T00:30:30.310Z",
+      "kind": "resolve",
+      "sessionId": "fe07b690-c201-4d3c-b705-64ed180f01d6",
+      "file": "/Users/luis/Projects/acervovista/docs/superpowers/specs/2026-06-11-acervovista-phase1-design.md"
+    },
+    {
+      "ts": "2026-06-12T00:48:53.027Z",
+      "kind": "resolve",
+      "sessionId": "fe07b690-c201-4d3c-b705-64ed180f01d6",
+      "file": "/Users/luis/Projects/acervovista/docs/superpowers/plans/2026-06-11-acervovista-foundation-and-intake.md"
+    },
+    {
+      "ts": "2026-06-12T11:50:43.609Z",
+      "kind": "resolve",
+      "sessionId": "fe07b690-c201-4d3c-b705-64ed180f01d6",
+      "file": "/Users/luis/Projects/acervovista/docs/superpowers/plans/2026-06-11-acervovista-foundation-and-intake.md"
+    },
+    {
+      "ts": "2026-06-12T11:53:50.859Z",
+      "kind": "resolve",
+      "sessionId": "fe07b690-c201-4d3c-b705-64ed180f01d6",
+      "file": "/Users/luis/Projects/acervovista/docs/superpowers/plans/2026-06-11-acervovista-foundation-and-intake.md"
+    },
+    {
+      "ts": "2026-06-12T11:59:54.998Z",
+      "kind": "resolve",
+      "sessionId": "fe07b690-c201-4d3c-b705-64ed180f01d6",
+      "file": "/Users/luis/Projects/acervovista/package.json"
+    },
+    {
+      "ts": "2026-06-12T11:59:55.722Z",
+      "kind": "resolve",
+      "sessionId": "fe07b690-c201-4d3c-b705-64ed180f01d6",
+      "file": "/Users/luis/Projects/acervovista/.gitignore"
+    },
+    {
+      "ts": "2026-06-12T11:59:56.834Z",
+      "kind": "resolve",
+      "sessionId": "fe07b690-c201-4d3c-b705-64ed180f01d6",
+      "file": "/Users/luis/Projects/acervovista/.env.example"
+    },
+    {
+      "ts": "2026-06-12T11:59:58.360Z",
+      "kind": "resolve",
+      "sessionId": "fe07b690-c201-4d3c-b705-64ed180f01d6",
+      "file": "/Users/luis/Projects/acervovista/.env"
+    },
+    {
+      "ts": "2026-06-12T12:03:18.217Z",
+      "kind": "resolve",
+      "sessionId": "fe07b690-c201-4d3c-b705-64ed180f01d6",
+      "file": "/Users/luis/Projects/acervovista/.gitignore"
+    },
+    {
+      "ts": "2026-06-12T12:03:36.087Z",
+      "kind": "resolve",
+      "sessionId": "fe07b690-c201-4d3c-b705-64ed180f01d6",
+      "file": "/Users/luis/Projects/acervovista/.gitignore"
+    },
+    {
+      "ts": "2026-06-12T12:04:34.652Z",
+      "kind": "resolve",
+      "sessionId": "fe07b690-c201-4d3c-b705-64ed180f01d6",
+      "file": "/Users/luis/Projects/acervovista/server/db/schema.sql"
+    },
+    {
+      "ts": "2026-06-12T12:08:58.521Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/server/package.json"
+    },
+    {
+      "ts": "2026-06-12T12:09:01.718Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/server/db/pool.js"
+    },
+    {
+      "ts": "2026-06-12T12:09:05.930Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/server/index.js"
+    },
+    {
+      "ts": "2026-06-12T12:11:44.948Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/server/lib/usStates.js"
+    },
+    {
+      "ts": "2026-06-12T12:12:00.425Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/server/lib/complexity.test.js"
+    },
+    {
+      "ts": "2026-06-12T12:12:09.409Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/server/lib/complexity.js"
+    },
+    {
+      "ts": "2026-06-12T12:14:32.456Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/server/routes/cases.js"
+    },
+    {
+      "ts": "2026-06-12T17:24:11.461Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/server/index.js"
+    },
+    {
+      "ts": "2026-06-12T17:24:24.281Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/server/index.js"
+    },
+    {
+      "ts": "2026-06-12T17:26:55.603Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/client/package.json"
+    },
+    {
+      "ts": "2026-06-12T17:26:59.776Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/client/vite.config.js"
+    },
+    {
+      "ts": "2026-06-12T17:27:04.314Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/client/index.html"
+    },
+    {
+      "ts": "2026-06-12T17:27:07.274Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/client/postcss.config.js"
+    },
+    {
+      "ts": "2026-06-12T17:27:12.226Z",
+      "kind": "resolve",
+      "sessionId": "970f3a0e-da00-4034-b4f1-c0c75de74ddc",
+      "file": "/Users/luis/Projects/acervovista/client/tailwind.config.js"
+    },
+    {
+      "ts": "2026-06-13T12:53:07.835Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/db/schema.sql"
+    },
+    {
+      "ts": "2026-06-13T12:53:19.697Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/db/schema.sql"
+    },
+    {
+      "ts": "2026-06-13T12:53:39.523Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/routes/assistant.js"
+    },
+    {
+      "ts": "2026-06-13T12:53:48.619Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/routes/assistant.js"
+    },
+    {
+      "ts": "2026-06-13T12:53:54.651Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/index.js"
+    },
+    {
+      "ts": "2026-06-13T12:54:00.776Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/index.js"
+    },
+    {
+      "ts": "2026-06-13T12:54:04.536Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/index.js"
+    },
+    {
+      "ts": "2026-06-13T12:54:14.460Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/app.js"
+    },
+    {
+      "ts": "2026-06-13T12:54:21.849Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/app.js"
+    },
+    {
+      "ts": "2026-06-13T12:54:25.567Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/index.js"
+    },
+    {
+      "ts": "2026-06-13T12:54:52.124Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/tests/assistant-cap.test.js"
+    },
+    {
+      "ts": "2026-06-13T12:55:04.164Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/tests/assistant-cap.test.js"
+    },
+    {
+      "ts": "2026-06-13T12:55:32.102Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/package.json"
+    },
+    {
+      "ts": "2026-06-13T12:55:38.301Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/package.json"
+    },
+    {
+      "ts": "2026-06-13T13:08:18.281Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/.env"
+    },
+    {
+      "ts": "2026-06-13T13:08:27.507Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/.env"
+    },
+    {
+      "ts": "2026-06-13T13:08:35.676Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/.env.example"
+    },
+    {
+      "ts": "2026-06-13T13:08:43.680Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/.env.example"
+    },
+    {
+      "ts": "2026-06-13T13:10:05.648Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/documentTypes.js"
+    },
+    {
+      "ts": "2026-06-13T13:10:16.110Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/documentTypes.js"
+    },
+    {
+      "ts": "2026-06-13T13:10:30.256Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/classification.js"
+    },
+    {
+      "ts": "2026-06-13T13:10:39.494Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/classification.js"
+    },
+    {
+      "ts": "2026-06-13T13:10:48.241Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/dateExtraction.js"
+    },
+    {
+      "ts": "2026-06-13T13:10:57.429Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/dateExtraction.js"
+    },
+    {
+      "ts": "2026-06-13T13:11:03.916Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/ocr.js"
+    },
+    {
+      "ts": "2026-06-13T13:11:12.039Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/ocr.js"
+    },
+    {
+      "ts": "2026-06-13T13:11:43.851Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/routes/documents.js"
+    },
+    {
+      "ts": "2026-06-13T13:12:02.543Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/routes/documents.js"
+    },
+    {
+      "ts": "2026-06-13T13:12:11.533Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/app.js"
+    },
+    {
+      "ts": "2026-06-13T13:12:15.624Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/app.js"
+    },
+    {
+      "ts": "2026-06-13T13:12:24.735Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/classification.test.js"
+    },
+    {
+      "ts": "2026-06-13T13:12:34.292Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/classification.test.js"
+    },
+    {
+      "ts": "2026-06-13T13:12:41.468Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/dateExtraction.test.js"
+    },
+    {
+      "ts": "2026-06-13T13:12:49.321Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/dateExtraction.test.js"
+    },
+    {
+      "ts": "2026-06-13T13:13:32.302Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/gapMap.js"
+    },
+    {
+      "ts": "2026-06-13T13:13:46.441Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/gapMap.js"
+    },
+    {
+      "ts": "2026-06-13T13:13:52.985Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/routes/cases.js"
+    },
+    {
+      "ts": "2026-06-13T13:14:01.300Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/routes/cases.js"
+    },
+    {
+      "ts": "2026-06-13T13:14:07.089Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/routes/cases.js"
+    },
+    {
+      "ts": "2026-06-13T13:14:17.681Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/gapMap.test.js"
+    },
+    {
+      "ts": "2026-06-13T13:16:42.761Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/lib/gapMap.test.js"
+    },
+    {
+      "ts": "2026-06-13T13:17:41.339Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/routes/documents.js"
+    },
+    {
+      "ts": "2026-06-13T13:17:45.749Z",
+      "kind": "resolve",
+      "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+      "file": "/Users/luis/Projects/acervovista/server/routes/documents.js"
+    }
+  ],
+  "unresolvedByFile": {
+    "/Users/luis/Projects/acervovista/server/db/schema.sql": 0,
+    "/Users/luis/Projects/acervovista/server/routes/assistant.js": 0,
+    "/Users/luis/Projects/acervovista/server/index.js": 0,
+    "/Users/luis/Projects/acervovista/server/app.js": 0,
+    "/Users/luis/Projects/acervovista/server/tests/assistant-cap.test.js": 0,
+    "/Users/luis/Projects/acervovista/server/package.json": 0,
+    "/Users/luis/Projects/acervovista/.env": 0,
+    "/Users/luis/Projects/acervovista/.env.example": 0,
+    "/Users/luis/Projects/acervovista/server/lib/documentTypes.js": 0,
+    "/Users/luis/Projects/acervovista/server/lib/classification.js": 0,
+    "/Users/luis/Projects/acervovista/server/lib/dateExtraction.js": 0,
+    "/Users/luis/Projects/acervovista/server/lib/ocr.js": 0,
+    "/Users/luis/Projects/acervovista/server/routes/documents.js": 0,
+    "/Users/luis/Projects/acervovista/server/lib/classification.test.js": 0,
+    "/Users/luis/Projects/acervovista/server/lib/dateExtraction.test.js": 0,
+    "/Users/luis/Projects/acervovista/server/lib/gapMap.js": 0,
+    "/Users/luis/Projects/acervovista/server/routes/cases.js": 0,
+    "/Users/luis/Projects/acervovista/server/lib/gapMap.test.js": 0
+  },
+  "fabrications": [],
+  "metrics": {
+    "violations": 0,
+    "blocks": 0,
+    "rewrites": 0,
+    "escapes": 0,
+    "denies": 0,
+    "resolves": 43
+  }
+}
