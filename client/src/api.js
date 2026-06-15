@@ -92,6 +92,15 @@ export async function generateHandoff(caseId) {
   return res.blob()
 }
 
+export async function reclassifyDocument(caseId, documentId) {
+  const res = await fetch(
+    `${API_BASE}/api/cases/${caseId}/documents/${documentId}/reclassify`,
+    { method: 'POST' }
+  )
+  if (!res.ok) throw new Error('Failed to reclassify document')
+  return res.json()
+}
+
 export async function askAssistant(caseId, message) {
   const res = await fetch(`${API_BASE}/api/cases/${caseId}/assistant`, {
     method: 'POST',

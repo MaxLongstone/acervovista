@@ -6,6 +6,7 @@ import multer from 'multer'
 import { pool } from '../db/pool.js'
 import { extractText } from '../lib/ocr.js'
 import { classifyDocument } from '../lib/classification.js'
+import { claudeClassifyDocument } from '../lib/claudeClassification.js'
 import { extractEarliestDate } from '../lib/dateExtraction.js'
 import { DOCUMENT_TYPES, DOCUMENT_TYPE_LABELS } from '../lib/documentTypes.js'
 
@@ -72,21 +73,82 @@ documentsRouter.post('/:id/documents', (req, res) => {
 
     try {
       const ocrText = await extractText(filePath, mimetype)
-      const documentType = classifyDocument(ocrText)
       const extractedDate = extractEarliestDate(ocrText)
 
+      // Layer 1: fast keyword classification
+      const keywordType = classifyDocument(ocrText)
+
+      let documentType = keywordType
+      let classificationLayer = 'keyword'
+      let classificationConfidence = keywordType !== 'unknown' ? 'high' : 'low'
+      let documentLanguage = 'en'
+      let documentJurisdiction = null
+      let plainLanguageSummary = null
+      let caseRelevance = null
+      let documentMetadata = {}
+
+      // Layer 2: Claude enrichment — runs for every document.
+      // Provides metadata, plain-language summary, language, jurisdiction.
+      // If Layer 1 returned a generic type (or unknown), Claude can also
+      // upgrade the type — but only when it returns 'high' confidence.
+      try {
+        const caseRow = await pool.query(
+          'SELECT decedent_name, has_will, state_of_domicile FROM cases WHERE id = $1',
+          [caseId]
+        )
+        const ctx = caseRow.rows[0] ?? {}
+
+        console.log(`[Layer 2] Triggered for: ${originalname} (Layer 1: ${keywordType})`)
+
+        const claudeResult = await claudeClassifyDocument(ocrText, {
+          decedentName: ctx.decedent_name,
+          hasWill: ctx.has_will,
+          stateOfDomicile: ctx.state_of_domicile,
+          layer1Type: keywordType,
+        })
+
+        console.log(`[Layer 2] Result: ${claudeResult.document_type} (${claudeResult.confidence})`)
+
+        // Override Layer 1 type when Claude is high-confidence or Layer 1 was unknown
+        if (keywordType === 'unknown' || claudeResult.confidence === 'high') {
+          documentType = claudeResult.document_type
+          classificationLayer = 'claude'
+          classificationConfidence = claudeResult.confidence
+        }
+
+        // Always use Claude's enrichment data
+        documentLanguage = claudeResult.language ?? 'en'
+        documentJurisdiction = claudeResult.jurisdiction
+        plainLanguageSummary = claudeResult.plain_language_summary
+        caseRelevance = claudeResult.case_relevance
+        documentMetadata = claudeResult.metadata ?? {}
+      } catch (claudeErr) {
+        console.error('[Layer 2] Failed, keeping Layer 1 result:', claudeErr.message)
+      }
+
       const result = await pool.query(
-        `INSERT INTO documents (case_id, filename, file_path, file_type, ocr_text, document_type, extracted_date)
-         VALUES ($1, $2, $3, $4, $5, $6, $7)
-         RETURNING *`,
-        [caseId, originalname, filePath, mimetype, ocrText, documentType, extractedDate]
+        `INSERT INTO documents (
+          case_id, filename, file_path, file_type, ocr_text, document_type, extracted_date,
+          classification_layer, classification_confidence, document_language,
+          document_jurisdiction, plain_language_summary, case_relevance, document_metadata
+        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
+        RETURNING id, case_id, uploaded_at, filename, file_type, document_type,
+                  extracted_date, classification_layer, classification_confidence,
+                  document_language, document_jurisdiction, plain_language_summary,
+                  case_relevance, document_metadata`,
+        [
+          caseId, originalname, filePath, mimetype, ocrText, documentType, extractedDate,
+          classificationLayer, classificationConfidence, documentLanguage,
+          documentJurisdiction, plainLanguageSummary, caseRelevance,
+          JSON.stringify(documentMetadata),
+        ]
       )
       const document = result.rows[0]
 
       await pool.query(
         `INSERT INTO timeline_events (case_id, event_type, label, document_id)
          VALUES ($1, 'document_uploaded', $2, $3)`,
-        [caseId, DOCUMENT_TYPE_LABELS[documentType], document.id]
+        [caseId, DOCUMENT_TYPE_LABELS[documentType] ?? documentType, document.id]
       )
 
       res.status(201).json(document)
@@ -101,7 +163,9 @@ documentsRouter.get('/:id/documents', async (req, res) => {
   const { id: caseId } = req.params
 
   const result = await pool.query(
-    `SELECT id, filename, document_type, extracted_date, uploaded_at
+    `SELECT id, filename, document_type, extracted_date, uploaded_at,
+            classification_layer, classification_confidence, document_language,
+            document_jurisdiction, plain_language_summary, case_relevance, document_metadata
      FROM documents WHERE case_id = $1 ORDER BY uploaded_at ASC`,
     [caseId]
   )
@@ -119,6 +183,89 @@ documentsRouter.get('/:id/documents/:docId', async (req, res) => {
   if (result.rows.length === 0) {
     return res.status(404).json({ error: 'Document not found' })
   }
+
+  res.json(result.rows[0])
+})
+
+// Re-run classification on an existing document (Layer 1 + Layer 2)
+documentsRouter.post('/:id/documents/:docId/reclassify', async (req, res) => {
+  const { id: caseId, docId } = req.params
+
+  const docResult = await pool.query(
+    'SELECT * FROM documents WHERE id = $1 AND case_id = $2',
+    [docId, caseId]
+  )
+  if (docResult.rows.length === 0) {
+    return res.status(404).json({ error: 'Document not found' })
+  }
+
+  const doc = docResult.rows[0]
+  const ocrText = doc.ocr_text
+
+  const keywordType = classifyDocument(ocrText)
+  let documentType = keywordType
+  let classificationLayer = 'keyword'
+  let classificationConfidence = keywordType !== 'unknown' ? 'high' : 'low'
+  let documentLanguage = 'en'
+  let documentJurisdiction = null
+  let plainLanguageSummary = null
+  let caseRelevance = null
+  let documentMetadata = {}
+
+  try {
+    const caseRow = await pool.query(
+      'SELECT decedent_name, has_will, state_of_domicile FROM cases WHERE id = $1',
+      [caseId]
+    )
+    const ctx = caseRow.rows[0] ?? {}
+
+    console.log(`[Reclassify] ${doc.filename} — Layer 1: ${keywordType}`)
+
+    const claudeResult = await claudeClassifyDocument(ocrText, {
+      decedentName: ctx.decedent_name,
+      hasWill: ctx.has_will,
+      stateOfDomicile: ctx.state_of_domicile,
+      layer1Type: keywordType,
+    })
+
+    console.log(`[Reclassify] Layer 2: ${claudeResult.document_type} (${claudeResult.confidence})`)
+
+    if (keywordType === 'unknown' || claudeResult.confidence === 'high') {
+      documentType = claudeResult.document_type
+      classificationLayer = 'claude'
+      classificationConfidence = claudeResult.confidence
+    }
+
+    documentLanguage = claudeResult.language ?? 'en'
+    documentJurisdiction = claudeResult.jurisdiction
+    plainLanguageSummary = claudeResult.plain_language_summary
+    caseRelevance = claudeResult.case_relevance
+    documentMetadata = claudeResult.metadata ?? {}
+  } catch (claudeErr) {
+    console.error('[Reclassify] Layer 2 failed:', claudeErr.message)
+  }
+
+  const result = await pool.query(
+    `UPDATE documents SET
+       document_type = $1,
+       classification_layer = $2,
+       classification_confidence = $3,
+       document_language = $4,
+       document_jurisdiction = $5,
+       plain_language_summary = $6,
+       case_relevance = $7,
+       document_metadata = $8
+     WHERE id = $9 AND case_id = $10
+     RETURNING id, filename, document_type, extracted_date, uploaded_at,
+               classification_layer, classification_confidence, document_language,
+               document_jurisdiction, plain_language_summary, case_relevance, document_metadata`,
+    [
+      documentType, classificationLayer, classificationConfidence,
+      documentLanguage, documentJurisdiction, plainLanguageSummary,
+      caseRelevance, JSON.stringify(documentMetadata),
+      docId, caseId,
+    ]
+  )
 
   res.json(result.rows[0])
 })
