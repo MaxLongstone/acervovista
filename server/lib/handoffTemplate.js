@@ -187,8 +187,99 @@ export function buildHandoffHtml({ caseRow, heirs, documents, timeline, gapMap }
     ${footer(6)}
   </div>`
 
+  // PAGE 7 — LAWYER QUESTIONS CHECKLIST
+  const LAWYER_QUESTIONS_PDF = [
+    {
+      category: 'The Process',
+      questions: [
+        'How long will this process take from start to finish?',
+        'What is the typical total cost — attorney fees, court fees, and other expenses?',
+        'Does this estate qualify for a simplified process, or does it require full administration?',
+        'What is the first thing we need to file, and when does that deadline begin?',
+        'Are there any immediate deadlines we need to be aware of right now?',
+      ],
+    },
+    {
+      category: 'The Will & Distribution',
+      questions: [
+        'Is the will likely to be admitted to court without issues, or do you see any problems with it?',
+        'What happens if an heir cannot be located or is deceased?',
+        'How are debts paid — before or after distributions to heirs?',
+        hasWill === 'no'
+          ? 'How does intestate succession work in this state for our family situation?'
+          : 'Are there specific bequests (jewelry, vehicles, etc.) we need to set aside before anything is sold?',
+      ],
+    },
+    {
+      category: 'Real Estate & Assets',
+      questions: [
+        'What steps are needed to transfer the home or other real estate into the heirs\' names?',
+        'Which accounts pass directly to beneficiaries outside of the estate process?',
+        'How do we notify and access bank accounts that were solely in the decedent\'s name?',
+        'Are retirement accounts (IRA, 401k) part of the estate or do they go directly to named beneficiaries?',
+      ],
+    },
+    {
+      category: 'Taxes',
+      questions: [
+        'Will the estate be required to file a federal or state estate tax return?',
+        'Does someone need to file a final individual income tax return for the decedent?',
+        'What is the step-up in basis and how does it affect inherited assets?',
+      ],
+    },
+    flags.includes('CROSS_BORDER') && {
+      category: 'Cross-Border Matters (flagged)',
+      questions: [
+        'Do we need separate legal proceedings in another state or country?',
+        'What apostille or certified translation requirements apply?',
+        'How does a Declaratoria de Herederos or foreign heirship document interact with this estate?',
+      ],
+    },
+    flags.includes('BUSINESS') && {
+      category: 'Business Interests (flagged)',
+      questions: [
+        'How do we handle the business during administration and what is our liability?',
+        'Is a business valuation required, and who orders it?',
+      ],
+    },
+    flags.includes('CONTESTED') && {
+      category: 'Contested Estate (flagged)',
+      questions: [
+        'If someone contests the will, what is the process and what are our options?',
+        'What fiduciary duties does the Personal Representative have when heirs disagree?',
+      ],
+    },
+    flags.includes('PRE_DEATH_XFER') && {
+      category: 'Pre-Death Transfers (flagged)',
+      questions: [
+        'Could pre-death transfers be challenged as fraudulent conveyances?',
+        'What documentation do we need to defend those transfers?',
+      ],
+    },
+  ].filter(Boolean)
+
+  const questionsHtml = LAWYER_QUESTIONS_PDF.map((section) => `
+    <div style="margin-bottom:18px;">
+      <div style="font-weight:bold;color:${COLORS.navy};font-size:12px;margin-bottom:8px;">${section.category}</div>
+      ${section.questions.map((q) => `
+        <div style="display:flex;gap:10px;margin-bottom:6px;align-items:baseline;">
+          <span style="flex-shrink:0;width:12px;height:12px;border:1.5px solid ${COLORS.ink};border-radius:2px;display:inline-block;margin-top:1px;"></span>
+          <span style="font-size:11px;line-height:1.55;color:${COLORS.ink};">${q}</span>
+        </div>`).join('')}
+    </div>`).join('')
+
+  const page7 = `<div class="page">
+    <h3>Questions to Ask Your Attorney</h3>
+    <p style="font-size:11px;color:${COLORS.ink};margin-bottom:20px;line-height:1.6;">
+      The following questions are organized by topic and are provided as a preparation aid for your first attorney meeting.
+      Questions in flagged sections were generated based on complexity indicators identified during intake.
+    </p>
+    ${questionsHtml}
+    ${footer(7)}
+  </div>`
+
   return `<!DOCTYPE html>
 <html><head><meta charset="utf-8"/><style>${CSS}</style></head>
-<body>${page1}${page2}${page3}${page4}${page5}${page6}</body>
+<body>${page1}${page2}${page3}${page4}${page5}${page6}${page7}</body>
 </html>`
 }

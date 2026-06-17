@@ -2,54 +2,32 @@ import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
 import SealIsotype from './SealIsotype'
 
-// Gentle 432 Hz sine wave with fade in/out — no external file needed
-function playGentleTone(onEnded) {
-  try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)()
-    const osc = ctx.createOscillator()
-    const gain = ctx.createGain()
-    osc.connect(gain)
-    gain.connect(ctx.destination)
-    osc.type = 'sine'
-    osc.frequency.value = 432
-    const now = ctx.currentTime
-    const dur = 5
-    gain.gain.setValueAtTime(0, now)
-    gain.gain.linearRampToValueAtTime(0.07, now + 0.8)
-    gain.gain.setValueAtTime(0.07, now + dur - 1.5)
-    gain.gain.linearRampToValueAtTime(0, now + dur)
-    osc.start(now)
-    osc.stop(now + dur)
-    osc.onended = () => { ctx.close(); onEnded?.() }
-  } catch {
-    onEnded?.()
-  }
-}
+const AUDIO_SRC = '/take-a-breath.mp3'
 
-export default function TakeABreath({ onDismiss }) {
+export default function TakeABreath({ triggerId, onDismiss }) {
   const { t } = useLanguage()
-  const [showMessage, setShowMessage] = useState(false)
-  const [visible, setVisible] = useState(true)
-  const fadeTimer = useRef(null)
+  const audioRef = useRef(null)
+  const dismissKey = triggerId ? `breath_dismissed_${triggerId}` : null
+  const alreadyDone = dismissKey ? !!localStorage.getItem(dismissKey) : false
+
+  const [visible, setVisible] = useState(!alreadyDone)
+
+  // If already dismissed for this trigger, skip immediately
+  useEffect(() => {
+    if (alreadyDone) onDismiss?.()
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (alreadyDone) return null
 
   function dismiss() {
+    if (dismissKey) localStorage.setItem(dismissKey, '1')
     setVisible(false)
-    clearTimeout(fadeTimer.current)
-    setTimeout(onDismiss, 300)
+    setTimeout(() => onDismiss?.(), 300)
   }
 
-  function handleAudio() {
-    setShowMessage(true)
-    playGentleTone(() => {
-      fadeTimer.current = setTimeout(dismiss, 2000)
-    })
+  function handlePlay() {
+    audioRef.current?.play().catch(() => {})
   }
-
-  // Auto-dismiss after 90 seconds
-  useEffect(() => {
-    const timer = setTimeout(dismiss, 90_000)
-    return () => clearTimeout(timer)
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div
@@ -59,6 +37,8 @@ export default function TakeABreath({ onDismiss }) {
         ${visible ? 'opacity-100' : 'opacity-0 pointer-events-none'}
       `}
     >
+      <audio ref={audioRef} src={AUDIO_SRC} preload="auto" />
+
       <div className="max-w-2xl mx-auto px-6 py-3 flex items-center gap-4">
         <SealIsotype size={24} className="shrink-0" />
         <p className="flex-1 text-sm text-navy font-sans">
@@ -66,7 +46,7 @@ export default function TakeABreath({ onDismiss }) {
         </p>
         <div className="flex items-center gap-3 shrink-0">
           <button
-            onClick={handleAudio}
+            onClick={handlePlay}
             aria-label="Play gentle audio"
             className="w-8 h-8 rounded-full flex items-center justify-center border border-parchment-deep
                        text-ink-light hover:text-navy hover:border-navy transition-colors duration-150"
@@ -83,14 +63,6 @@ export default function TakeABreath({ onDismiss }) {
           </button>
         </div>
       </div>
-
-      {showMessage && (
-        <div className="max-w-2xl mx-auto px-6 pb-3 animate-settle">
-          <p className="font-display italic text-[15px] text-ink-mid">
-            {t('breath.after')}
-          </p>
-        </div>
-      )}
     </div>
   )
 }

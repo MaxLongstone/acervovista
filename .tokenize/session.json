@@ -1,5 +1,5 @@
 {
-  "sessionId": "796082c0-571e-4be3-8598-2be95fbf02ac",
+  "sessionId": "05e63370-c2ff-46d0-a17b-85cae80dbb99",
   "startedAt": "2026-06-12T00:30:30.310Z",
   "updatedAt": "2026-06-13T13:17:45.749Z",
   "events": [
@@ -412,26 +412,7 @@
       "file": "/Users/luis/Projects/acervovista/server/routes/documents.js"
     }
   ],
-  "unresolvedByFile": {
-    "/Users/luis/Projects/acervovista/server/db/schema.sql": 0,
-    "/Users/luis/Projects/acervovista/server/routes/assistant.js": 0,
-    "/Users/luis/Projects/acervovista/server/index.js": 0,
-    "/Users/luis/Projects/acervovista/server/app.js": 0,
-    "/Users/luis/Projects/acervovista/server/tests/assistant-cap.test.js": 0,
-    "/Users/luis/Projects/acervovista/server/package.json": 0,
-    "/Users/luis/Projects/acervovista/.env": 0,
-    "/Users/luis/Projects/acervovista/.env.example": 0,
-    "/Users/luis/Projects/acervovista/server/lib/documentTypes.js": 0,
-    "/Users/luis/Projects/acervovista/server/lib/classification.js": 0,
-    "/Users/luis/Projects/acervovista/server/lib/dateExtraction.js": 0,
-    "/Users/luis/Projects/acervovista/server/lib/ocr.js": 0,
-    "/Users/luis/Projects/acervovista/server/routes/documents.js": 0,
-    "/Users/luis/Projects/acervovista/server/lib/classification.test.js": 0,
-    "/Users/luis/Projects/acervovista/server/lib/dateExtraction.test.js": 0,
-    "/Users/luis/Projects/acervovista/server/lib/gapMap.js": 0,
-    "/Users/luis/Projects/acervovista/server/routes/cases.js": 0,
-    "/Users/luis/Projects/acervovista/server/lib/gapMap.test.js": 0
-  },
+  "unresolvedByFile": {},
   "fabrications": [],
   "metrics": {
     "violations": 0,
@@ -439,6 +420,6 @@
     "rewrites": 0,
     "escapes": 0,
     "denies": 0,
-    "resolves": 43
+    "resolves": 0
   }
 }

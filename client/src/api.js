@@ -18,6 +18,16 @@ export async function getEstimate(caseId) {
   return res.json()
 }
 
+export async function declareItem(caseId, text) {
+  const res = await fetch(`${API_BASE}/api/cases/${caseId}/declare`, {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify({ text }),
+  })
+  if (!res.ok) throw new Error('Failed to save entry')
+  return res.json()
+}
+
 export async function listCases() {
   const res = await fetch(`${API_BASE}/api/cases`)
   if (!res.ok) throw new Error('Failed to list cases')

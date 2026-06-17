@@ -198,12 +198,32 @@ const en = {
 
   // ── Lawyer questions ──────────────────────────────────────────────────────
   'lawyer.title':           'Questions to ask your lawyer',
+  'lawyer.disclaimer':      'These questions are generated from your case file to help you prepare for a legal consultation. They are under attorney review and may be updated. They are not legal advice.',
 
   // ── Handoff ───────────────────────────────────────────────────────────────
   'handoff.title':          'Generate handoff document',
   'handoff.subtitle':       'A PDF summary of your case file for your attorney.',
   'handoff.button':         'Generate PDF',
   'handoff.generating':     'Generating…',
+
+  // ── What you know (Block 8) ───────────────────────────────────────────────
+  'wyk.title':       'What you know',
+  'wyk.subtitle':    'Tell us what you remember. We’ll hold it until documents arrive.',  // [STANCE]
+  'wyk.placeholder': 'A property your father owned, a bank account, something that happened before he passed — tell us what you know.',
+  'wyk.submit':      'Add to your file',
+  'wyk.processing':  'Reading…',
+  'wyk.held':        'Held — waiting for a document',   // [STANCE] never "Unverified"
+  'wyk.graduated':   'You knew this — confirmed.',      // [STANCE]
+
+  // Document hook lines — "Estimated" appears; Upload → is the action
+  'wyk.hook.deed':      'A deed or transfer record would confirm this — Upload →',
+  'wyk.hook.account':   'A bank statement or account record would confirm this — Upload →',
+  'wyk.hook.insurance': 'A policy or beneficiary statement would confirm this — Upload →',
+  'wyk.hook.will':      'A copy of the will or trust would confirm this — Upload →',
+  'wyk.hook.general':   'A receipt, contract, or record would confirm this — Upload →',
+  'wyk.hook.vague':     'A note, transfer, or message could support this later — Upload →',  // [STANCE]
+
+  'wyk.empty':       'Nothing added yet. Tell us what you remember and we’ll hold it here.',
 
   // ── General ───────────────────────────────────────────────────────────────
   'error.loadCase':         'Could not load your case file.',

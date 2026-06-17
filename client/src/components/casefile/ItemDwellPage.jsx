@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getCaseItems } from '../../api'
 import { useLanguage } from '../../i18n/LanguageContext'
 import SealIsotype from '../SealIsotype'
@@ -210,15 +210,23 @@ function DefaultDwell({ item, t }) {
 
 // ── Page shell ────────────────────────────────────────────────────────────────
 
-export default function ItemDwellPage({ caseId, itemId, onBack }) {
+export default function ItemDwellPage({ caseId, itemId, onBack, onBreathTrigger }) {
   const { t } = useLanguage()
   const [item, setItem] = useState(null)
+  const breathFired = useRef(false)
 
   useEffect(() => {
     getCaseItems(caseId)
-      .then(items => setItem(items.find(i => i.id === itemId) ?? null))
+      .then(items => {
+        const found = items.find(i => i.id === itemId) ?? null
+        setItem(found)
+        if (found?.state === 'flagged' && !breathFired.current) {
+          breathFired.current = true
+          onBreathTrigger?.('flagged-dwell')
+        }
+      })
       .catch(() => {})
-  }, [caseId, itemId])
+  }, [caseId, itemId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!item) {
     return (

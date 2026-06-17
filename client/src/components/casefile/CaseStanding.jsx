@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getStanding } from '../../api'
 import { useLanguage } from '../../i18n/LanguageContext'
 
@@ -24,13 +24,20 @@ function strengthTier(confirmed) {
   return 'thin'
 }
 
-export default function CaseStanding({ caseId }) {
+export default function CaseStanding({ caseId, onBreathTrigger }) {
   const { t } = useLanguage()
   const [data, setData] = useState(null)
+  const breathFired = useRef(false)
 
   useEffect(() => {
-    getStanding(caseId).then(setData).catch(() => {})
-  }, [caseId])
+    getStanding(caseId).then((d) => {
+      setData(d)
+      if (d?.priority?.type === 'deadline' && !breathFired.current) {
+        breathFired.current = true
+        onBreathTrigger?.('red-deadline')
+      }
+    }).catch(() => {})
+  }, [caseId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!data) return null
 

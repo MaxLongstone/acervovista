@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 const QUESTION_BANK = [
   {
@@ -81,6 +82,7 @@ const QUESTION_BANK = [
 const ALL_QUESTIONS = QUESTION_BANK.flatMap((cat) => cat.questions)
 
 export default function LawyerQuestions() {
+  const { t } = useLanguage()
   const [checked, setChecked] = useState(new Set())
   const [isExpanded, setIsExpanded] = useState(false)
 
@@ -139,6 +141,11 @@ export default function LawyerQuestions() {
           {isExpanded ? '−' : '+'}
         </span>
       </button>
+
+      {/* Disclaimer — footnote tone, above questions */}
+      <p className="px-5 pb-4 text-[12px] font-sans text-ink-light leading-[1.6]">
+        {t('lawyer.disclaimer')}
+      </p>
 
       {/* Question list */}
       {isExpanded && (

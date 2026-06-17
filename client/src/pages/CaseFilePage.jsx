@@ -4,6 +4,7 @@ import CaseStanding from '../components/casefile/CaseStanding'
 import DashboardBody from '../components/casefile/DashboardBody'
 import ItemDwellPage from '../components/casefile/ItemDwellPage'
 import EstimateCard from '../components/casefile/EstimateCard'
+import WhatYouKnow from '../components/casefile/WhatYouKnow'
 import AssistantPanel from '../components/casefile/AssistantPanel'
 import HandoffCard from '../components/casefile/HandoffCard'
 import CaseSummaryCard from '../components/casefile/CaseSummaryCard'
@@ -100,6 +101,7 @@ export default function CaseFilePage({ caseId }) {
       <CaseStanding caseId={caseId} onBreathTrigger={handleBreathTrigger} />
       <DashboardBody caseId={caseId} onDwell={setDwellItemId} />
       <EstimateCard caseId={caseId} />
+      <WhatYouKnow caseId={caseId} onUpload={() => documentsRef.current?.scrollIntoView({ behavior: 'smooth' })} />
 
       <CaseSummaryCard
         caseData={caseData}

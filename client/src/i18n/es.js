@@ -199,12 +199,31 @@ const es = {
 
   // ── Lawyer questions ──────────────────────────────────────────────────────
   'lawyer.title':           'Preguntas para hacerle a tu abogado',
+  'lawyer.disclaimer':      'Estas preguntas se generan a partir de su expediente para ayudarle a prepararse para una consulta legal. Están bajo revisión de un abogado y pueden actualizarse. No constituyen asesoramiento jurídico.',
 
   // ── Handoff ───────────────────────────────────────────────────────────────
   'handoff.title':          'Generar documento de traspaso',
   'handoff.subtitle':       'Un resumen en PDF de tu expediente para tu abogado.',
   'handoff.button':         'Generar PDF',
   'handoff.generating':     'Generando…',
+
+  // ── What you know (Block 8) ──────────────────────────────────────────────
+  'wyk.title':       'Lo que sabes',
+  'wyk.subtitle':    'Cuéntanos lo que recuerdas. Lo guardamos hasta que lleguen los documentos.',  // [STANCE] [HUMAN_REVIEW]
+  'wyk.placeholder': 'Una propiedad, una cuenta bancaria, algo que ocurrió antes de su fallecimiento — cuéntanos lo que sabes.',
+  'wyk.submit':      'Agregar a tu expediente',
+  'wyk.processing':  'Leyendo…',
+  'wyk.held':        'En espera — aguardando un documento',   // [STANCE] [HUMAN_REVIEW]
+  'wyk.graduated':   'Ya lo sabías — confirmado.',            // [STANCE] [HUMAN_REVIEW]
+
+  'wyk.hook.deed':      'Una escritura o constancia de transferencia lo confirmaría — Subir →',
+  'wyk.hook.account':   'Un estado de cuenta o registro bancario lo confirmaría — Subir →',
+  'wyk.hook.insurance': 'Una póliza o carta de beneficiarios lo confirmaría — Subir →',
+  'wyk.hook.will':      'Una copia del testamento o fideicomiso lo confirmaría — Subir →',
+  'wyk.hook.general':   'Un recibo, contrato o registro lo confirmaría — Subir →',
+  'wyk.hook.vague':     'Una nota, transferencia o mensaje podría respaldar esto más adelante — Subir →',  // [STANCE] [HUMAN_REVIEW]
+
+  'wyk.empty':       'Aún no se agregó nada. Cuéntanos lo que recuerdas y lo guardaremos aquí.',
 
   // ── General ───────────────────────────────────────────────────────────────
   'error.loadCase':         'No se pudo cargar tu expediente.',

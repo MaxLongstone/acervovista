@@ -258,6 +258,36 @@ casesRouter.get('/:id/estimate', async (req, res) => {
   })
 })
 
+// POST /api/cases/:id/declare — free-text entry → declared case_item
+casesRouter.post('/:id/declare', async (req, res) => {
+  const { id }   = req.params
+  const { text } = req.body
+  if (!text?.trim()) return res.status(400).json({ error: 'text required' })
+
+  const { claudeExtractDeclaration } = await import('../lib/claudeDeclare.js')
+  const extracted = await claudeExtractDeclaration(text.trim())
+
+  const result = await pool.query(
+    `INSERT INTO case_items
+       (case_id, item_type, state, provenance, title, summary,
+        item_date, value_cents, value_currency, conflict)
+     VALUES ($1, $2, 'unknown', 'declared', $3, $4, $5, $6, $7, $8)
+     RETURNING *`,
+    [
+      id,
+      extracted.item_type,
+      extracted.title,
+      extracted.summary,
+      extracted.item_date,
+      extracted.value_cents,
+      extracted.value_currency,
+      JSON.stringify({ hook_type: extracted.hook_type }),
+    ]
+  )
+
+  res.status(201).json(result.rows[0])
+})
+
 casesRouter.get('/:id/gap-map', async (req, res) => {
   const { id } = req.params
 

@@ -37,6 +37,7 @@ function AppShell() {
     localStorage.setItem(CASE_ID_KEY, newCaseId)
     setPageKey((k) => k + 1)
     setCaseId(newCaseId)
+    setShowBreath(true)
   }
 
   function handleSwitchCase(newCaseId) {
@@ -54,7 +55,7 @@ function AppShell() {
       }
 
       {showBreath && (
-        <TakeABreath onDismiss={() => setShowBreath(false)} />
+        <TakeABreath triggerId="case-entry" onDismiss={() => setShowBreath(false)} />
       )}
 
       <div key={pageKey} className="pt-14 animate-page-enter">
