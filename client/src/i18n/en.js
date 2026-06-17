@@ -64,6 +64,36 @@ const en = {
   'standing.flagged':         'Flagged',
   'standing.unknown':         'Held',
 
+  // ── Dwell page (Block 6) ──────────────────────────────────────────────────
+  // [VERBATIM] The limit-of-knowledge and lawyer-band copy below must not be
+  // paraphrased. Wording was reviewed for legal neutrality and emotional safety.
+  'dwell.back':           'Back to case file',
+  'dwell.onFileStates':   'The deed on file states',
+  'dwell.youDescribed':   'You described',
+
+  // [VERBATIM] [STANCE]
+  'dwell.limitOfKnowledge':
+    'We’re not saying which is right, or that anything improper happened — only that they don’t match, and that’s worth understanding.',
+
+  'dwell.whatYouCanDo':   'What you can do',
+  'dwell.selfServe1.title': 'Pull the public county deed history',
+  'dwell.selfServe1.desc':  'Miami-Dade keeps deed transfers in the public record. Search the Official Records by address to see the full transfer history for this property.',
+  'dwell.selfServe1.link':  'Open Miami-Dade Official Records →',
+  'dwell.selfServe2.title': 'Add what you remember',
+  'dwell.selfServe2.desc':  'Anything you know about the property or this transfer goes into your file.',
+  'dwell.selfServe2.cta':   'Add a note',
+
+  // [VERBATIM] [STANCE] Both possibilities held open — never implies outcome.
+  'dwell.lawyerBand':
+    'A property leaving someone’s name while they’re alive can be perfectly ordinary — or not. Only a lawyer can tell you which. Your file is built to hand over.',
+
+  'dwell.touches':          'Where this touches the rest',
+  'dwell.touchTimeline':    'Timeline · August 2023',
+  'dwell.touchEstimate':    'Estate estimate',
+
+  // [STANCE] "stir things up" — gentle, honest, not alarming.
+  'dwell.breathFlag':       'This one can stir things up. Take your time.',  // [STANCE]
+
   // ── Item peek (Block 5) ───────────────────────────────────────────────────
   // [STANCE] CTAs are verbs of attention, never alarm.
   // "Look at this more closely" — never "Resolve conflict" / "Fix"

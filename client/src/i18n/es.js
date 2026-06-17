@@ -61,6 +61,32 @@ const es = {
   'conflict.callout':           'Este elemento tiene una observación que debe resolverse antes de que la herencia pueda continuar.',  // [STANCE]
   'conflict.limitOfKnowledge':  'Acervo Vista puede mostrarte ambas versiones. Determinar cuál es correcta legalmente requiere la asistencia de tu abogado.',  // [STANCE] [HUMAN_REVIEW]
 
+  // ── Dwell page (Block 6) ──────────────────────────────────────────────────
+  'dwell.back':           'Volver al expediente',
+  'dwell.onFileStates':   'El documento en el expediente indica',
+  'dwell.youDescribed':   'Tú describiste',
+
+  // [VERBATIM] [HUMAN_REVIEW] Legal-neutral and emotionally careful phrasing.
+  'dwell.limitOfKnowledge':
+    'No estamos diciendo quién tiene razón, ni que haya ocurrido algo irregular — solo que no coinciden, y eso vale la pena entender.',
+
+  'dwell.whatYouCanDo':   'Qué puedes hacer',
+  'dwell.selfServe1.title': 'Consultar el historial público de escrituras del condado',
+  'dwell.selfServe1.desc':  'Miami-Dade lleva un registro público de transferencias de propiedad. Busca en los Registros Oficiales por dirección para ver el historial completo de esta propiedad.',
+  'dwell.selfServe1.link':  'Abrir Registros Oficiales de Miami-Dade →',
+  'dwell.selfServe2.title': 'Agregar lo que recuerdas',
+  'dwell.selfServe2.desc':  'Todo lo que sepas sobre la propiedad o esta transferencia queda en tu expediente.',
+  'dwell.selfServe2.cta':   'Agregar una nota',
+
+  // [VERBATIM] [HUMAN_REVIEW]
+  'dwell.lawyerBand':
+    'Una propiedad que sale del nombre de alguien mientras aún vive puede ser perfectamente normal — o no. Solo un abogado puede decirte cuál es el caso. Tu expediente está preparado para entregar.',
+
+  'dwell.touches':          'Cómo se relaciona con el resto',
+  'dwell.touchTimeline':    'Línea de tiempo · agosto 2023',
+  'dwell.touchEstimate':    'Estimación del patrimonio',
+  'dwell.breathFlag':       'Este tema puede remover cosas. Tómate el tiempo que necesites.',  // [HUMAN_REVIEW]
+
   // ── Item peek (Block 5) ───────────────────────────────────────────────────
   'peek.close':           'Cerrar',
   'peek.whereToGet':      'Dónde conseguirlo',         // [HUMAN_REVIEW]
