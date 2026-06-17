@@ -198,6 +198,66 @@ casesRouter.get('/:id/standing', async (req, res) => {
   res.json({ counts, priority })
 })
 
+// GET /api/cases/:id/estimate
+casesRouter.get('/:id/estimate', async (req, res) => {
+  const { id } = req.params
+  const result = await pool.query(
+    `SELECT item_type, state, provenance, title, value_cents, value_currency
+     FROM case_items
+     WHERE case_id = $1 AND item_type IN ('asset', 'debt') AND value_cents IS NOT NULL
+     ORDER BY value_cents DESC`,
+    [id]
+  )
+
+  const assets = result.rows.filter(r => r.item_type === 'asset')
+    .map(r => ({ ...r, value_cents: parseInt(r.value_cents, 10) }))
+  const debts  = result.rows.filter(r => r.item_type === 'debt')
+    .map(r => ({ ...r, value_cents: parseInt(r.value_cents, 10) }))
+
+  // Low = only document-confirmed assets; High = all assets including declared
+  const lowAssets  = assets
+    .filter(a => a.provenance === 'document' && a.state === 'confirmed')
+    .reduce((s, a) => s + a.value_cents, 0)
+  const highAssets = assets.reduce((s, a) => s + a.value_cents, 0)
+  const totalDebts = debts.reduce((s, d) => s + d.value_cents, 0)
+
+  const lowNet  = Math.max(0, lowAssets  - totalDebts)
+  const highNet = Math.max(0, highAssets - totalDebts)
+
+  // Confidence tier — drives the softening copy
+  const declaredCents = assets
+    .filter(a => a.provenance === 'declared')
+    .reduce((s, a) => s + a.value_cents, 0)
+  const declaredRatio = highAssets > 0 ? declaredCents / highAssets : 0
+
+  let confidence
+  if (declaredRatio === 0)       confidence = 'confirmed'
+  else if (declaredRatio < 0.35) confidence = 'mostly_confirmed'
+  else if (declaredRatio < 0.75) confidence = 'mixed'
+  else                           confidence = 'mostly_declared'
+
+  res.json({
+    low_cents:  lowNet,
+    high_cents: highNet,
+    currency:   'USD',
+    confidence,
+    assets: assets.map(a => ({
+      title:       a.title,
+      value_cents: a.value_cents,
+      currency:    a.value_currency,
+      provenance:  a.provenance,
+      state:       a.state,
+    })),
+    debts: debts.map(d => ({
+      title:       d.title,
+      value_cents: d.value_cents,
+      currency:    d.value_currency,
+      provenance:  d.provenance,
+      state:       d.state,
+    })),
+  })
+})
+
 casesRouter.get('/:id/gap-map', async (req, res) => {
   const { id } = req.params
 

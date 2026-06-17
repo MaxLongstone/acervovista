@@ -130,7 +130,31 @@ const en = {
   'timeline.noDate':        'No date',
   'timeline.caseOpened':    'Case opened',
 
-  // ── Estimate ──────────────────────────────────────────────────────────────
+  // ── Estimate card + popup (Block 7) ──────────────────────────────────────
+  'estimate.cardTitle':     'Estimated inheritance value',
+  'estimate.headline':      '{low}–{high} (estimated net)',
+  'estimate.seeBreakdown':  'See breakdown →',
+
+  // Confidence softening lines — degrades honestly as declared ratio rises
+  'estimate.confidence.confirmed':        'These figures rest on confirmed documents.',
+  'estimate.confidence.mostly_confirmed': 'This rests mainly on confirmed documents, with some figures you’ve shared.',  // [STANCE]
+  'estimate.confidence.mixed':            'This rests on a mix of documents and figures you’ve told us.',               // [STANCE]
+  'estimate.confidence.mostly_declared':  'This rests largely on figures you’ve told us. It will sharpen as documents come in.',  // [STANCE]
+
+  // Popup sections — "Estimated" in every header
+  'estimate.assets':        'Estimated assets',
+  'estimate.debts':         'Estimated reductions',
+  'estimate.net':           'Estimated net',
+  'estimate.noItems':       'None on file.',
+
+  // Provenance labels
+  'estimate.provenance.document': 'Document on file',
+  'estimate.provenance.declared': 'You told us',
+
+  // Footer — not a valuation, not legal or tax advice
+  'estimate.footer':        'This is an estimate, not a valuation. Not legal or tax advice. Based on figures in your file as of today.',
+
+  // Legacy keys kept for existing components
   'estimate.title':         'Estimated estate value',
   'estimate.disclaimer':    'Estimated from declared and confirmed asset values. Not a legal valuation.',
 

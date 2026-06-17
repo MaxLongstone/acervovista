@@ -12,6 +12,12 @@ export async function getStanding(caseId) {
   return res.json()
 }
 
+export async function getEstimate(caseId) {
+  const res = await fetch(`${API_BASE}/api/cases/${caseId}/estimate`)
+  if (!res.ok) throw new Error('Failed to load estimate')
+  return res.json()
+}
+
 export async function listCases() {
   const res = await fetch(`${API_BASE}/api/cases`)
   if (!res.ok) throw new Error('Failed to list cases')

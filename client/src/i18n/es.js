@@ -135,7 +135,27 @@ const es = {
   'timeline.noDate':        'Sin fecha',
   'timeline.caseOpened':    'Caso abierto',
 
-  // ── Estimate ──────────────────────────────────────────────────────────────
+  // ── Estimate card + popup (Block 7) ──────────────────────────────────────
+  'estimate.cardTitle':     'Valor estimado de la herencia',
+  'estimate.headline':      '{low}–{high} (neto estimado)',
+  'estimate.seeBreakdown':  'Ver desglose →',
+
+  'estimate.confidence.confirmed':        'Estas cifras se basan en documentos confirmados.',
+  'estimate.confidence.mostly_confirmed': 'Se basa principalmente en documentos confirmados, con algunas cifras que nos compartiste.',  // [HUMAN_REVIEW]
+  'estimate.confidence.mixed':            'Se basa en una combinación de documentos y cifras que nos indicaste.',                        // [HUMAN_REVIEW]
+  'estimate.confidence.mostly_declared':  'Se basa en gran medida en cifras que nos indicaste. Se irá afinando a medida que lleguen los documentos.',  // [HUMAN_REVIEW]
+
+  'estimate.assets':        'Bienes estimados',
+  'estimate.debts':         'Reducciones estimadas',
+  'estimate.net':           'Neto estimado',
+  'estimate.noItems':       'Ninguno en el expediente.',
+
+  'estimate.provenance.document': 'Documento en el expediente',
+  'estimate.provenance.declared': 'Nos lo indicaste',
+
+  'estimate.footer':        'Esto es una estimación, no una valuación. No es asesoramiento legal ni fiscal. Basado en las cifras de tu expediente a la fecha de hoy.',
+
+  // Legacy keys
   'estimate.title':         'Valor estimado de la herencia',
   'estimate.disclaimer':    'Estimado a partir de los valores declarados y confirmados. No es una valuación legal.',
 

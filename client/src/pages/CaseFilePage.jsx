@@ -3,6 +3,7 @@ import { getCase, getGapMap, listDocuments } from '../api'
 import CaseStanding from '../components/casefile/CaseStanding'
 import DashboardBody from '../components/casefile/DashboardBody'
 import ItemDwellPage from '../components/casefile/ItemDwellPage'
+import EstimateCard from '../components/casefile/EstimateCard'
 import AssistantPanel from '../components/casefile/AssistantPanel'
 import HandoffCard from '../components/casefile/HandoffCard'
 import CaseSummaryCard from '../components/casefile/CaseSummaryCard'
@@ -10,6 +11,7 @@ import DocumentCard from '../components/casefile/DocumentCard'
 import DocumentUpload from '../components/casefile/DocumentUpload'
 import GapMap from '../components/casefile/GapMap'
 import LawyerQuestions from '../components/casefile/LawyerQuestions'
+import TakeABreath from '../components/TakeABreath'
 
 export default function CaseFilePage({ caseId }) {
   const [dwellItemId, setDwellItemId] = useState(null)
@@ -18,7 +20,14 @@ export default function CaseFilePage({ caseId }) {
   const [error, setError] = useState(null)
   const [documents, setDocuments] = useState([])
   const [gapMap, setGapMap] = useState([])
+  const [breathTriggerId, setBreathTriggerId] = useState(null)
   const documentsRef = useRef(null)
+
+  function handleBreathTrigger(triggerId) {
+    if (!localStorage.getItem(`breath_dismissed_${triggerId}`)) {
+      setBreathTriggerId(triggerId)
+    }
+  }
 
   useEffect(() => {
     getCase(caseId)
@@ -80,13 +89,17 @@ export default function CaseFilePage({ caseId }) {
   }
 
   if (dwellItemId) {
-    return <ItemDwellPage caseId={caseId} itemId={dwellItemId} onBack={() => setDwellItemId(null)} />
+    return <ItemDwellPage caseId={caseId} itemId={dwellItemId} onBack={() => setDwellItemId(null)} onBreathTrigger={handleBreathTrigger} />
   }
 
   return (
     <>
-      <CaseStanding caseId={caseId} />
+      {breathTriggerId && (
+        <TakeABreath triggerId={breathTriggerId} onDismiss={() => setBreathTriggerId(null)} />
+      )}
+      <CaseStanding caseId={caseId} onBreathTrigger={handleBreathTrigger} />
       <DashboardBody caseId={caseId} onDwell={setDwellItemId} />
+      <EstimateCard caseId={caseId} />
 
       <CaseSummaryCard
         caseData={caseData}
@@ -127,7 +140,7 @@ export default function CaseFilePage({ caseId }) {
 
           {/* Gap map */}
           <div className="bg-white border border-parchment-deep rounded-lg p-6">
-            <GapMap gapMap={gapMap} />
+            <GapMap gapMap={gapMap} onBreathTrigger={handleBreathTrigger} />
           </div>
 
           {/* Assistant */}
