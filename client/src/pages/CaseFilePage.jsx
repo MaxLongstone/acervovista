@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { getCase, getGapMap, listDocuments } from '../api'
+import CaseStanding from '../components/casefile/CaseStanding'
 import AssistantPanel from '../components/casefile/AssistantPanel'
 import HandoffCard from '../components/casefile/HandoffCard'
 import CaseSummaryCard from '../components/casefile/CaseSummaryCard'
 import DocumentCard from '../components/casefile/DocumentCard'
 import DocumentUpload from '../components/casefile/DocumentUpload'
 import GapMap from '../components/casefile/GapMap'
+import LawyerQuestions from '../components/casefile/LawyerQuestions'
 
 export default function CaseFilePage({ caseId }) {
   const [caseData, setCaseData] = useState(null)
@@ -76,6 +78,8 @@ export default function CaseFilePage({ caseId }) {
 
   return (
     <>
+      <CaseStanding caseId={caseId} />
+
       <CaseSummaryCard
         caseData={caseData}
         onStartUploading={() => documentsRef.current?.scrollIntoView({ behavior: 'smooth' })}
@@ -126,6 +130,9 @@ export default function CaseFilePage({ caseId }) {
               cap={assistantMeta.cap}
             />
           )}
+
+          {/* Lawyer questions prep checklist */}
+          <LawyerQuestions />
 
           {/* Handoff */}
           <HandoffCard caseId={caseId} />

@@ -5,6 +5,20 @@ import { computeGapMap } from '../lib/gapMap.js'
 
 export const casesRouter = express.Router()
 
+// List all cases — lightweight index for the case switcher.
+// No auth yet; in production this would be scoped to the signed-in user.
+casesRouter.get('/', async (req, res) => {
+  const result = await pool.query(
+    `SELECT c.id, c.decedent_name, c.date_of_death, c.state_of_domicile,
+            c.jurisdictions, c.has_will, c.intake_completed_at, c.closed_at,
+            (SELECT h.relationship FROM heirs h WHERE h.case_id = c.id ORDER BY h.id LIMIT 1)
+              AS viewer_relationship
+     FROM cases c
+     ORDER BY c.intake_completed_at DESC`
+  )
+  res.json(result.rows)
+})
+
 casesRouter.post('/', async (req, res) => {
   const {
     userType,
@@ -108,6 +122,65 @@ casesRouter.get('/:id', async (req, res) => {
     ...caseResult.rows[0],
     heirs: heirsResult.rows,
   })
+})
+
+// Standing summary — state counts + single highest-priority flag for the hero panel.
+casesRouter.get('/:id/standing', async (req, res) => {
+  const { id } = req.params
+
+  const countsResult = await pool.query(
+    `SELECT state, COUNT(*)::int AS n FROM case_items WHERE case_id = $1 GROUP BY state`,
+    [id]
+  )
+  const counts = { confirmed: 0, pending: 0, missing: 0, flagged: 0, unknown: 0 }
+  for (const row of countsResult.rows) {
+    if (counts[row.state] !== undefined) counts[row.state] = row.n
+  }
+
+  let priority = null
+
+  // (a) live deadline — upcoming event items within 90 days
+  const deadlineResult = await pool.query(
+    `SELECT title, item_date FROM case_items
+     WHERE case_id = $1 AND item_type = 'event' AND state != 'missing'
+       AND item_date IS NOT NULL AND item_date <= NOW() + INTERVAL '90 days'
+       AND item_date >= NOW()
+     ORDER BY item_date ASC LIMIT 1`,
+    [id]
+  )
+  if (deadlineResult.rows.length > 0) {
+    const row = deadlineResult.rows[0]
+    priority = { type: 'deadline', title: row.title, date: row.item_date }
+  }
+
+  // (b) critical missing document
+  if (!priority) {
+    const missingResult = await pool.query(
+      `SELECT title FROM case_items
+       WHERE case_id = $1 AND item_type = 'document' AND state = 'missing'
+       ORDER BY created_at ASC LIMIT 1`,
+      [id]
+    )
+    if (missingResult.rows.length > 0) {
+      priority = { type: 'missing', title: missingResult.rows[0].title }
+    }
+  }
+
+  // (c) flagged conflict — calmest last
+  if (!priority) {
+    const flaggedResult = await pool.query(
+      `SELECT title, conflict FROM case_items
+       WHERE case_id = $1 AND state = 'flagged'
+       ORDER BY created_at ASC LIMIT 1`,
+      [id]
+    )
+    if (flaggedResult.rows.length > 0) {
+      const row = flaggedResult.rows[0]
+      priority = { type: 'conflict', title: row.title, conflict: row.conflict }
+    }
+  }
+
+  res.json({ counts, priority })
 })
 
 casesRouter.get('/:id/gap-map', async (req, res) => {
