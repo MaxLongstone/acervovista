@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 const STATUS = {
   green:    { color: 'bg-present', label: 'Present' },
@@ -11,6 +12,7 @@ const STATUS = {
 const DEATH_CERT_TYPES = ['death_certificate', 'death-certificate', 'death_cert']
 
 export default function GapMap({ gapMap, onBreathTrigger }) {
+  const { t } = useLanguage()
   const triggered = useRef(false)
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function GapMap({ gapMap, onBreathTrigger }) {
       {/* Required documents */}
       <div>
         <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-light mb-4">
-          Document Checklist
+          {t('gapMap.required')}
         </h2>
         <ul className="space-y-3">
           {required.map((item, i) => {
@@ -70,7 +72,7 @@ export default function GapMap({ gapMap, onBreathTrigger }) {
       {optional.length > 0 && (
         <div>
           <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-light mb-4">
-            Also Worth Gathering
+            {t('gapMap.optional')}
           </h2>
           <ul className="space-y-3">
             {optional.map((item, i) => (
