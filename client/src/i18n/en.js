@@ -225,7 +225,44 @@ const en = {
 
   'wyk.empty':       'Nothing added yet. Tell us what you remember and we’ll hold it here.',
 
-  // ── General ───────────────────────────────────────────────────────────────
+    // ── Things you can do now (Block 9) ─────────────────────
+  // [STANCE] Framing: "how people usually do this" not "you should do this".
+  // Lawyer-touch actions give safe first steps then stop at the referral wall.
+  'actions.title':       'Things you can do now',
+  'actions.subtitle':    'How people usually handle this — based on what’s in your file.',
+  'actions.self':        'You can do this yourself',
+  'actions.lawyerTouch': 'You can start — this reaches a lawyer',
+  'actions.haveReady':   'What to have ready',
+  'actions.timeEst':     'Roughly',
+  'actions.phoneScript': 'How to open the call',
+  'actions.expand':      'See how →',
+  'actions.collapse':    'Close',
+  'actions.lawyerStop':  'This is where a lawyer steps in. Your file is built to hand over.',
+
+  'action.deathCert.title':  'Request certified copies of the death certificate',
+  'action.deathCert.what':   'The death certificate unlocks almost everything else — bank accounts, property transfers, benefit claims. In Florida, the county vital records office issues certified copies.',
+  'action.deathCert.ready':  'Full legal name of the deceased|Date and place of death|Your ID and your relationship to the deceased|The fee (usually $10–15 per copy — request several)',
+  'action.deathCert.time':   '1–3 weeks by mail; often same-day in person',
+  'action.deathCert.script': 'I am calling to request certified copies of a death certificate. The deceased is [name], who passed on [date]. I am the [relationship]. How many copies do you recommend for an estate with a bank account and real property?',
+
+  'action.notifyBank.title':  'Let the financial institution know',
+  'action.notifyBank.what':   'This is a notification call, not a claim. You are telling them the account holder has passed and asking what their estate department needs. The money does not move yet — that takes legal paperwork you are still gathering.',
+  'action.notifyBank.ready':  'A copy of the death certificate|Account numbers, if you have them|Your own ID',
+  'action.notifyBank.time':   '30–60 minutes on the phone; paperwork usually follows',
+  'action.notifyBank.script': 'I am calling to report the death of an account holder and ask what your estate department needs. The account holder is [name], who passed on [date]. I am the [relationship]. Can you connect me with whoever handles this?',
+
+  'action.deedHistory.title': 'Pull the public county deed history',
+  'action.deedHistory.what':  'Miami-Dade keeps a public record of every property transfer. You can search by address yourself — no attorney needed for this step. What you find may clarify the deed in your file, or surface questions worth bringing to your attorney.',
+  'action.deedHistory.ready': 'The property address',
+  'action.deedHistory.time':  '15 minutes online',
+
+  'action.declaratoria.title':  'Start the Argentine heir declaration process',
+  'action.declaratoria.what':   'Argentina requires a formal court declaration — the declaratoria de herederos — before an estate there can be distributed. The first step is contacting the Argentine consulate to understand what they will need from you.',
+  'action.declaratoria.ready':  'The death certificate (certified, with apostille when ready)|Birth or marriage records showing your relationship to the deceased',
+  'action.declaratoria.time':   'The full process takes months; the consulate call takes about 30 minutes',
+  'action.declaratoria.script': 'I am calling about the estate of an Argentine citizen who recently passed. I am trying to understand what documentation the consulate needs to support the declaratoria de herederos process in Argentina.',
+
+// ── General ───────────────────────────────────────────────────────────────
   'error.loadCase':         'Could not load your case file.',
   'loading':                'Loading…',
   'yes':                    'Yes',

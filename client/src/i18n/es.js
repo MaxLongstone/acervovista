@@ -225,7 +225,43 @@ const es = {
 
   'wyk.empty':       'Aún no se agregó nada. Cuéntanos lo que recuerdas y lo guardaremos aquí.',
 
-  // ── General ───────────────────────────────────────────────────────────────
+    // ── Things you can do now (Block 9) ─────────────────────
+  // [STANCE] [HUMAN_REVIEW] Spanish phrasing: "cómo suele hacerse" not "deberías hacer".
+  'actions.title':       'Lo que puedes hacer ahora',
+  'actions.subtitle':    'Cómo suele manejarse esto — según lo que hay en tu expediente.',
+  'actions.self':        'Puedes hacerlo tú mismo',
+  'actions.lawyerTouch': 'Puedes empezar — esto llega a un abogado',
+  'actions.haveReady':   'Qué tener a mano',
+  'actions.timeEst':     'Aproximadamente',
+  'actions.phoneScript': 'Cómo abrir la llamada',
+  'actions.expand':      'Cómo →',
+  'actions.collapse':    'Cerrar',
+  'actions.lawyerStop':  'Aquí es donde interviene un abogado. Tu expediente está preparado para entregar.',
+
+  'action.deathCert.title':  'Solicitar copias certificadas del acta de defunción',
+  'action.deathCert.what':   'El acta de defunción es el documento que desbloquea casi todo lo demás — cuentas bancarias, transferencias de bienes, reclamos de beneficios. En Florida, la oficina de registros vitales del condado emite copias certificadas.',
+  'action.deathCert.ready':  'Nombre legal completo del fallecido|Fecha y lugar de fallecimiento|Tu identificación y tu relación con el fallecido|El costo (generalmente $10–15 por copia — solicita varias)',
+  'action.deathCert.time':   '1–3 semanas por correo; a veces el mismo día en persona',
+  'action.deathCert.script': 'Llamo para solicitar copias certificadas de un acta de defunción. El fallecido es [nombre], quien falleó el [fecha]. Soy el/la [relación]. ¿Cuántas copias recomienda para una sucesión con cuenta bancaria e inmueble?',
+
+  'action.notifyBank.title':  'Notificar a la institución financiera',
+  'action.notifyBank.what':   'Esta es una llamada de notificación, no un reclamo. Estás informándoles que el titular de la cuenta falleció y preguntando qué necesita su departamento de sucesiones. El dinero no se mueve aún — eso requiere documentación legal que todavía estás reuniendo.',
+  'action.notifyBank.ready':  'Una copia del acta de defunción|Números de cuenta, si los tienes|Tu propia identificación',
+  'action.notifyBank.time':   '30–60 minutos por teléfono; generalmente sigue documentación',
+  'action.notifyBank.script': 'Llamo para reportar el fallecimiento de un titular de cuenta y preguntar qué necesita su departamento de sucesiones. El titular es [nombre], quien falleó el [fecha]. Soy el/la [relación]. ¿Me puede comunicar con quien maneja estos casos?',
+
+  'action.deedHistory.title': 'Consultar el historial público de escrituras del condado',
+  'action.deedHistory.what':  'Miami-Dade lleva un registro público de cada transferencia de propiedad. Puedes buscar por dirección tú mismo — no se necesita abogado para este paso. Lo que encuentres puede aclarar la escritura en tu expediente, o plantear preguntas para tu abogado.',
+  'action.deedHistory.ready': 'La dirección del inmueble',
+  'action.deedHistory.time':  '15 minutos en línea',
+
+  'action.declaratoria.title':  'Iniciar el proceso de declaratoria de herederos argentina',
+  'action.declaratoria.what':   'Argentina requiere una declaración judicial formal — la declaratoria de herederos — antes de que una sucesión pueda distribuirse allí. El primer paso es contactar al consulado argentino para entender qué documentación necesitarán de ti.',
+  'action.declaratoria.ready':  'El acta de defunción (certificada, con apostilla cuando esté lista)|Documentos de nacimiento o matrimonio que acrediten tu relación con el fallecido',
+  'action.declaratoria.time':   'El proceso completo lleva meses; la llamada al consulado toma unos 30 minutos',
+  'action.declaratoria.script': 'Llamo por la sucesión de un ciudadano argentino recientemente fallecido. Estoy tratando de entender qué documentación necesita el consulado para apoyar el proceso de declaratoria de herederos en Argentina.',
+
+// ── General ───────────────────────────────────────────────────────────────
   'error.loadCase':         'No se pudo cargar tu expediente.',
   'loading':                'Cargando…',
   'yes':                    'Sí',
