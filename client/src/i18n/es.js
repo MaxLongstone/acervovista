@@ -61,6 +61,22 @@ const es = {
   'conflict.callout':           'Este elemento tiene una observación que debe resolverse antes de que la herencia pueda continuar.',  // [STANCE]
   'conflict.limitOfKnowledge':  'Acervo Vista puede mostrarte ambas versiones. Determinar cuál es correcta legalmente requiere la asistencia de tu abogado.',  // [STANCE] [HUMAN_REVIEW]
 
+  // ── Item peek (Block 5) ───────────────────────────────────────────────────
+  'peek.close':           'Cerrar',
+  'peek.whereToGet':      'Dónde conseguirlo',         // [HUMAN_REVIEW]
+  'peek.lookMore':        'Ver esto más de cerca',      // [HUMAN_REVIEW] [STANCE]
+  'peek.fullRecord':      'Ver el registro completo',
+  'peek.onFileStates':    'El documento en el expediente indica:',  // [HUMAN_REVIEW] [STANCE]
+  'peek.youDescribed':    'Tú describiste:',
+  'peek.filed':           'Presentado',
+
+  // ── Dashboard body (Block 4) ──────────────────────────────────────────────
+  'body.file':           'Tu expediente',
+  'body.happened':       'Lo que ocurrió',
+  'body.viewAll':        'Ver todo →',
+  'body.fullTimeline':   'Línea de tiempo completa →',
+  'body.noDate':         'Sin fecha',
+
   // ── Standing panel (Block 3) ──────────────────────────────────────────────
   'standing.strong':          'Estás más avanzado que la mayoría.',         // [HUMAN_REVIEW]
   'standing.mid':             'Has hecho un progreso real aquí.',            // [HUMAN_REVIEW]

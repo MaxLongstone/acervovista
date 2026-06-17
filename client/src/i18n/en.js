@@ -64,6 +64,25 @@ const en = {
   'standing.flagged':         'Flagged',
   'standing.unknown':         'Held',
 
+  // ── Item peek (Block 5) ───────────────────────────────────────────────────
+  // [STANCE] CTAs are verbs of attention, never alarm.
+  // "Look at this more closely" — never "Resolve conflict" / "Fix"
+  // "Where to get it" — never "Obtain" / "Provide"
+  'peek.close':           'Close',
+  'peek.whereToGet':      'Where to get it',         // [STANCE] missing items
+  'peek.lookMore':        'Look at this more closely', // [STANCE] flagged items
+  'peek.fullRecord':      'See the full record',      // confirmed / pending
+  'peek.onFileStates':    'The document on file states:',  // [STANCE] not "shows" / "claims"
+  'peek.youDescribed':    'You described:',
+  'peek.filed':           'Filed',
+
+  // ── Dashboard body (Block 4) ──────────────────────────────────────────────
+  'body.file':           'Your file',
+  'body.happened':       'What happened',
+  'body.viewAll':        'View all →',
+  'body.fullTimeline':   'Full timeline →',
+  'body.noDate':         'No date',
+
   // ── Gap map ───────────────────────────────────────────────────────────────
   'gapMap.required':        'Document checklist',
   'gapMap.optional':        'Also worth gathering',

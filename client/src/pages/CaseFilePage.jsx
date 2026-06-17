@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { getCase, getGapMap, listDocuments } from '../api'
 import CaseStanding from '../components/casefile/CaseStanding'
+import DashboardBody from '../components/casefile/DashboardBody'
+import ItemDwellPage from '../components/casefile/ItemDwellPage'
 import AssistantPanel from '../components/casefile/AssistantPanel'
 import HandoffCard from '../components/casefile/HandoffCard'
 import CaseSummaryCard from '../components/casefile/CaseSummaryCard'
@@ -10,6 +12,7 @@ import GapMap from '../components/casefile/GapMap'
 import LawyerQuestions from '../components/casefile/LawyerQuestions'
 
 export default function CaseFilePage({ caseId }) {
+  const [dwellItemId, setDwellItemId] = useState(null)
   const [caseData, setCaseData] = useState(null)
   const [assistantMeta, setAssistantMeta] = useState(null)
   const [error, setError] = useState(null)
@@ -76,9 +79,14 @@ export default function CaseFilePage({ caseId }) {
     )
   }
 
+  if (dwellItemId) {
+    return <ItemDwellPage caseId={caseId} itemId={dwellItemId} onBack={() => setDwellItemId(null)} />
+  }
+
   return (
     <>
       <CaseStanding caseId={caseId} />
+      <DashboardBody caseId={caseId} onDwell={setDwellItemId} />
 
       <CaseSummaryCard
         caseData={caseData}

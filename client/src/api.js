@@ -1,5 +1,11 @@
 const API_BASE = 'http://localhost:3001'
 
+export async function getCaseItems(caseId) {
+  const res = await fetch(`${API_BASE}/api/cases/${caseId}/items`)
+  if (!res.ok) throw new Error('Failed to load items')
+  return res.json()
+}
+
 export async function getStanding(caseId) {
   const res = await fetch(`${API_BASE}/api/cases/${caseId}/standing`)
   if (!res.ok) throw new Error('Failed to load standing')

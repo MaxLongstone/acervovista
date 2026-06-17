@@ -124,6 +124,21 @@ casesRouter.get('/:id', async (req, res) => {
   })
 })
 
+// All case_items for a case — dashboard body reads this once and splits for each column.
+casesRouter.get('/:id/items', async (req, res) => {
+  const { id } = req.params
+  const result = await pool.query(
+    `SELECT id, item_type, state, provenance, title, summary,
+            item_date, value_cents, value_currency, conflict,
+            linked_item_ids, document_id, jurisdiction
+     FROM case_items
+     WHERE case_id = $1
+     ORDER BY item_date ASC NULLS LAST, created_at ASC`,
+    [id]
+  )
+  res.json(result.rows)
+})
+
 // Standing summary — state counts + single highest-priority flag for the hero panel.
 casesRouter.get('/:id/standing', async (req, res) => {
   const { id } = req.params
