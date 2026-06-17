@@ -262,6 +262,20 @@ const es = {
   'action.declaratoria.script': 'Llamo por la sucesión de un ciudadano argentino recientemente fallecido. Estoy tratando de entender qué documentación necesita el consulado para apoyar el proceso de declaratoria de herederos en Argentina.',
 
 // ── General ───────────────────────────────────────────────────────────────
+  // ── Ask launcher (Block 10) ─────────────────
+  'ask.label':     'Preguntar sobre esta herencia',
+  'ask.close':     'Cerrar',
+  'ask.promise':   'Puedo explicar documentos y pasos del proceso en términos simples. No asesoro — cualquier decisión corresponde a tu abogado.',
+  'ask.placeholder': 'Pregunta sobre un documento, un término o el proceso…',
+  'ask.send':      'Enviar',
+  'ask.remaining': '{n} de {cap} restantes',
+  'ask.capReached': 'Usaste todas las {cap} preguntas incluidas. Contacta a tu asesor de Acervo Vista para continuar.',
+
+  // ── Take a Breath inline band (Block 10) ───────────────
+  'breath.inline':  'Esto puede ser difícil. Tómate un minuto si lo necesitas.',
+  'breath.commit':  'una pausa breve · alrededor de un minuto',
+  'breath.dismiss': 'Ahora no',
+
   'error.loadCase':         'No se pudo cargar tu expediente.',
   'loading':                'Cargando…',
   'yes':                    'Sí',

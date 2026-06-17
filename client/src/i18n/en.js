@@ -263,6 +263,20 @@ const en = {
   'action.declaratoria.script': 'I am calling about the estate of an Argentine citizen who recently passed. I am trying to understand what documentation the consulate needs to support the declaratoria de herederos process in Argentina.',
 
 // ── General ───────────────────────────────────────────────────────────────
+  // ── Ask launcher (Block 10) ─────────────────
+  'ask.label':     'Ask about this estate',
+  'ask.close':     'Close',
+  'ask.promise':   'I can explain documents and process steps in plain language. I don’t advise — anything that needs a decision goes to your attorney.',
+  'ask.placeholder': 'Ask about a document, a term, or the process…',
+  'ask.send':      'Send',
+  'ask.remaining': '{n} of {cap} remaining',
+  'ask.capReached': 'You’ve used all {cap} included questions. Contact your Acervo Vista advisor to continue.',
+
+  // ── Take a Breath inline band (Block 10) ───────────────
+  'breath.inline':  'This one can be hard. Take a minute if you need it.',
+  'breath.commit':  'a short pause · about a minute',
+  'breath.dismiss': 'Not now',
+
   'error.loadCase':         'Could not load your case file.',
   'loading':                'Loading…',
   'yes':                    'Yes',

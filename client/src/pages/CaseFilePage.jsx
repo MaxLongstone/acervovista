@@ -6,7 +6,7 @@ import ItemDwellPage from '../components/casefile/ItemDwellPage'
 import EstimateCard from '../components/casefile/EstimateCard'
 import WhatYouKnow from '../components/casefile/WhatYouKnow'
 import ActionsCard from '../components/casefile/ActionsCard'
-import AssistantPanel from '../components/casefile/AssistantPanel'
+import AskLauncher from '../components/casefile/AskLauncher'
 import HandoffCard from '../components/casefile/HandoffCard'
 import CaseSummaryCard from '../components/casefile/CaseSummaryCard'
 import DocumentCard from '../components/casefile/DocumentCard'
@@ -96,10 +96,10 @@ export default function CaseFilePage({ caseId }) {
 
   return (
     <>
+      <CaseStanding caseId={caseId} onBreathTrigger={handleBreathTrigger} />
       {breathTriggerId && (
         <TakeABreath triggerId={breathTriggerId} onDismiss={() => setBreathTriggerId(null)} />
       )}
-      <CaseStanding caseId={caseId} onBreathTrigger={handleBreathTrigger} />
       <DashboardBody caseId={caseId} onDwell={setDwellItemId} />
       <EstimateCard caseId={caseId} />
       <WhatYouKnow caseId={caseId} onUpload={() => documentsRef.current?.scrollIntoView({ behavior: 'smooth' })} />
@@ -147,15 +147,6 @@ export default function CaseFilePage({ caseId }) {
             <GapMap gapMap={gapMap} onBreathTrigger={handleBreathTrigger} />
           </div>
 
-          {/* Assistant */}
-          {assistantMeta && (
-            <AssistantPanel
-              caseId={caseId}
-              initialTurnsUsed={assistantMeta.turnsUsed}
-              cap={assistantMeta.cap}
-            />
-          )}
-
           {/* Lawyer questions prep checklist */}
           <LawyerQuestions />
 
@@ -164,6 +155,13 @@ export default function CaseFilePage({ caseId }) {
 
         </div>
       </div>
+
+      {/* Ask launcher — sticky footer */}
+      <AskLauncher
+        caseId={caseId}
+        initialTurnsUsed={assistantMeta?.turnsUsed ?? 0}
+        cap={assistantMeta?.cap ?? 50}
+      />
     </>
   )
 }
