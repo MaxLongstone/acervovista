@@ -1322,8 +1322,8 @@ footer {
     <li><a href="#quiz">Assess my case</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="/blog">Blog</a></li>
-    <li><a href="/login" class="nav-login">Log in</a></li>
-    <li><a href="#quiz" class="nav-cta">Get started</a></li>
+    <li><a id="nav-login" href="#" class="nav-login">Log in</a></li>
+    <li><a id="nav-cta" href="#" class="nav-cta">Get started</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
     <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
@@ -1339,8 +1339,8 @@ footer {
   <a href="#whom"    onclick="closeMobile()">Who it's for</a>
   <a href="#quiz"    onclick="closeMobile()">Assess my case</a>
   <a href="#pricing" onclick="closeMobile()">Pricing</a>
-  <a href="/login"   onclick="closeMobile()">Log in</a>
-  <a href="#quiz"    onclick="closeMobile()" style="color:var(--stamp);">Get started →</a>
+  <a id="mobile-login" href="#" onclick="closeMobile()">Log in</a>
+  <a id="mobile-cta" href="#" onclick="closeMobile()" style="color:var(--stamp);">Get started →</a>
 </div>
 
 <!-- ── HERO ── -->
@@ -1362,7 +1362,7 @@ footer {
       then connect you to the lawyer who can take it from here.
     </p>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="scrollTo('quiz')">
+      <button class="btn-primary" onclick="window.location.href=APP_URL+'/signup?entry=assessment'">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
@@ -1664,7 +1664,7 @@ footer {
         <li>Lawyer referral — mandatory after intake</li>
         <li>Spanish and English documents</li>
       </ul>
-      <button class="btn-outline" onclick="scrollTo('quiz')">Start with a free assessment</button>
+      <button class="btn-outline" onclick="window.location.href=APP_URL+'/signup?entry=assessment'">Start with a free assessment</button>
     </div>
     <div class="pricing-card featured reveal" style="transition-delay:80ms">
       <div class="pricing-badge">Founding firm rate</div>
@@ -1721,7 +1721,7 @@ footer {
         bank accounts in Miami, and two sons in California. I was in
         Argentina when he died. Nobody handed me a guide for that."
       </blockquote>
-      <p class="about-body">AcervoVista was built during a real multi-jurisdictional estate dispute — Venezuela, Florida, and Argentina. Four heirs. Adversarial factions. Missing documents. Suspicious pre-death transfers. A decedent who used legal structures to obscure assets.</p>
+      <p class="about-body">AcervoVista was built during a real multi-jurisdictional estate dispute — Venezuela, Florida, and Argentina. Four heirs. Adversarial factions. Missing documents. Pre-death transfers. A decedent with legal structures across three jurisdictions and four heirs without coordinated representation.</p>
       <p class="about-body">A practicing attorney reviewed the first version and was impressed — not by legal analysis, but by the organization, the timeline, and the gaps it surfaced. That reaction is the proof of concept.</p>
       <div class="pillars-grid">
         <div class="pillar">
@@ -1785,7 +1785,7 @@ footer {
     </div>
   </div>
   <br><br>
-  <button class="btn-early" onclick="scrollTo('quiz')">Assess my case — free</button>
+  <button class="btn-early" onclick="window.location.href=APP_URL+'/signup?entry=assessment'">Assess my case — free</button>
 </section>
 
 <!-- ── FOOTER ── -->
@@ -1833,7 +1833,7 @@ footer {
   </div>
   <div class="footer-bottom">
     <p class="footer-legal">
-      © 2026 AcervoVista, Inc. All rights reserved. · Not legal advice. ·
+      AcervoVista organizes estate documents and reconstructs timelines. It does not provide legal advice, legal representation, or legal strategy. Nothing on this platform should be relied upon as a substitute for advice from a licensed attorney. · © 2026 AcervoVista, Inc. ·
       <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a>
     </p>
     <div class="footer-lang">
@@ -1979,7 +1979,7 @@ var QUESTIONS = [
   },
   {
     id: 'access', text: 'Have you received all documents and communications you expected about the estate?',
-    hint: 'Limited access is a strong signal of a contested estate.',
+    hint: 'Limited access is something worth understanding better with a lawyer.',
     options: ['Yes, everything', 'No — some things are being withheld', "I'm not sure what to expect"]
   }
 ];
@@ -2141,18 +2141,27 @@ function showResult(email) {
       '<div class="result-title">' + res.title + '</div>' +
       '<p class="result-desc">' + res.desc + '</p>' +
       '<button class="quiz-next-btn" style="margin:0 auto;display:block;padding:13px 36px;" ' +
-        'onclick="window.location.href=\'https://app.acervovista.com\'">' +
+        'onclick="window.location.href=APP_URL+\'/signup?entry=assessment\'">' +
         'Start building your case file →' +
       '</button>' +
       '<p class="result-note">Assessment sent to ' + email + ' · Check your inbox in a few minutes.</p>' +
     '</div>';
 }
 
+// ─── CONFIG ───
+var APP_URL = 'http://localhost:5173'; // production: https://app.acervovista.com
+
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', function() {
   animateTimeline();
   animateHeroCounter();
   renderQuiz();
+
+  // Wire nav links to app URL so static server doesn't 404
+  document.getElementById('nav-login').href    = APP_URL + '/login';
+  document.getElementById('nav-cta').href      = APP_URL + '/signup?entry=direct';
+  document.getElementById('mobile-login').href = APP_URL + '/login';
+  document.getElementById('mobile-cta').href   = APP_URL + '/signup?entry=direct';
 });
 </script>
 </body>

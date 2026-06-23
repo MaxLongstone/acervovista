@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — AcervoVista</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #0F1F38;
+  --navy-deep: #080F1C;
+  --parchment: #F5F0E8;
+  --parch-deep:#EDE5D4;
+  --parch-dark:#C8B99A;
+  --stamp:     #C0392B;
+  --ink:       #1A1A2E;
+  --ink-mid:   #4A4A6A;
+  --ink-light: #8A8AAA;
+  --present:   #1D9E75;
+  --off-white: #FAFAF8;
+  --display: 'Playfair Display', Georgia, serif;
+  --sans:    'Inter', system-ui, sans-serif;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--parchment); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--stamp); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--navy);
+  height: 56px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 64px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-wordmark { font-family: var(--display); font-size: 17px; font-weight: 700; color: var(--parchment); letter-spacing: 0.01em; }
+.nav-wordmark span { color: var(--stamp); }
+.nav-back { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--parch-dark); text-decoration: none; transition: color 150ms; }
+.nav-back:hover { color: var(--parchment); text-decoration: none; }
+
+/* DRAFT BANNER */
+.draft-banner {
+  background: #7a4f00;
+  color: #fff8e1;
+  text-align: center;
+  padding: 12px 24px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+.draft-banner strong { font-weight: 700; }
+
+/* CONTENT */
+.page-wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 100px; }
+.doc-title {
+  font-family: var(--display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.doc-meta {
+  font-size: 13px;
+  color: var(--ink-light);
+  margin-bottom: 12px;
+  font-style: italic;
+}
+.doc-version-note {
+  background: var(--off-white);
+  border: 1px solid var(--parch-deep);
+  border-left: 3px solid var(--stamp);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-bottom: 48px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+.doc-version-note strong { color: var(--navy); }
+
+h1.doc-title { margin-bottom: 6px; }
+
+h2 {
+  font-family: var(--display);
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 700;
+  color: var(--navy);
+  margin-top: 52px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--parch-deep);
+  line-height: 1.25;
+}
+h3 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+p { font-size: 15px; color: var(--ink-mid); line-height: 1.85; margin-bottom: 16px; }
+ul, ol { margin: 0 0 16px 24px; }
+li { font-size: 15px; color: var(--ink-mid); line-height: 1.8; margin-bottom: 6px; }
+strong { color: var(--navy); font-weight: 600; }
+
+.attorney-note {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-left: 3px solid #f9a825;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 20px 0;
+  font-size: 13px;
+  color: #5d4037;
+  line-height: 1.65;
+}
+.attorney-note::before {
+  content: '⚠ Attorney Review Required — ';
+  font-weight: 700;
+}
+
+.critical-note {
+  background: rgba(192,57,43,0.06);
+  border: 1px solid rgba(192,57,43,0.2);
+  border-left: 3px solid var(--stamp);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 20px 0;
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.65;
+}
+.critical-note strong { color: var(--stamp); }
+
+.caps { font-size: 13px; line-height: 1.75; }
+
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--parch-deep);
+  margin: 48px 0 0;
+}
+
+/* FOOTER */
+footer {
+  background: var(--navy-deep);
+  padding: 36px 64px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-legal { font-size: 12px; color: var(--ink-light); line-height: 1.6; }
+.footer-legal a { color: var(--ink-light); }
+.footer-legal a:hover { color: var(--parch-dark); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .nav { padding: 0 24px; }
+  footer { padding: 28px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/">
+    <svg viewBox="0 0 80 80" width="26" height="26" fill="none" aria-hidden="true">
+      <circle cx="40" cy="40" r="36" fill="#F5F0E8"/>
+      <rect x="24" y="20" width="32" height="38" rx="2.5" fill="#0F1F38"/>
+      <line x1="29" y1="28" x2="50" y2="28" stroke="#F5F0E8" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
+      <line x1="29" y1="34" x2="47" y2="34" stroke="#F5F0E8" stroke-width="1.4" stroke-linecap="round" opacity="0.50"/>
+      <path d="M24 49 L56 49 L56 55.5 Q56 58 53.5 58 L26.5 58 Q24 58 24 55.5 Z" fill="#C0392B"/>
+    </svg>
+    <span class="nav-wordmark">Acervo<span>Vista</span></span>
+  </a>
+  <a class="nav-back" href="/">← Back to site</a>
+</nav>
+
+<div class="draft-banner">
+  <strong>Draft — under attorney review.</strong> This document is not yet final and is not currently in effect.
+</div>
+
+<div class="page-wrap">
+
+  <h1 class="doc-title">Terms of Service</h1>
+  <p class="doc-meta">Version 2 &nbsp;·&nbsp; Effective Date: June 20, 2026 (pending attorney review)</p>
+
+  <div class="doc-version-note">
+    <strong>Version 2 changes:</strong> All resolvable placeholders filled. Email addresses confirmed. Retention periods set. CCPA analysis completed (threshold not met at launch). Anthropic and Google data processing terms reviewed and summarized. Legal basis for processing identified. Florida breach notification timeline added. Items requiring attorney opinion clearly marked.
+  </div>
+
+  <h2>1. Introduction and Acceptance</h2>
+  <p>These Terms of Service ("Terms") govern your access to and use of AcervoVista, a document intelligence platform operated by AcervoVista, Inc. ("AcervoVista," "we," "us," or "our"). By accessing or using AcervoVista, you agree to be bound by these Terms. If you do not agree to these Terms, do not use the platform.</p>
+  <p>AcervoVista provides tools to help individuals and families organize documents, reconstruct timelines, identify gaps in estate records, and understand the contents of an estate. AcervoVista is NOT a law firm and does NOT provide legal advice, legal representation, or legal strategy. See Section 4 (No Legal Advice) for the full scope of this limitation.</p>
+  <p>These Terms apply to all users of AcervoVista, including:</p>
+  <ul>
+    <li>Consumer users — heirs, family members, and individuals organizing an estate file</li>
+    <li>Professional users — licensed attorneys, paralegals, family offices, and advisors accessing the platform under a verified professional account</li>
+    <li>Collaborators — individuals invited to view or contribute to a case by the case owner</li>
+  </ul>
+
+  <h2>2. What AcervoVista Is and Is Not</h2>
+  <h3>2.1 What AcervoVista Is</h3>
+  <p>AcervoVista is a document intelligence and estate organization platform. It provides:</p>
+  <ul>
+    <li>An intake process that builds a skeleton case file from information you provide</li>
+    <li>Document upload, OCR text extraction, and document classification</li>
+    <li>A timeline reconstruction of dated events based on uploaded documents</li>
+    <li>A gap map identifying which documents are present, pending, or missing for a given estate type and jurisdiction</li>
+    <li>Plain language summaries of what uploaded documents appear to contain</li>
+    <li>An AI-powered assistant that answers questions about documents, process steps, and estate administration generally</li>
+    <li>A Lawyer Handoff Package — a structured PDF export of your case file organized for a lawyer's review</li>
+    <li>Referrals to licensed attorneys in your jurisdiction</li>
+  </ul>
+
+  <h3>2.2 What AcervoVista Is Not</h3>
+  <div class="critical-note"><strong>Critical Limitation:</strong> AcervoVista is not a law firm. It does not provide legal advice, legal representation, or legal strategy. Nothing produced by AcervoVista constitutes legal advice or should be relied upon as such.</div>
+  <p>Specifically, AcervoVista does not:</p>
+  <ul>
+    <li>Advise you on your legal rights or entitlements under any will, trust, or succession law</li>
+    <li>Tell you whether any transfer, disposition, or action was lawful or unlawful</li>
+    <li>Represent you in any legal proceeding or negotiation</li>
+    <li>Guarantee the accuracy, completeness, or legal sufficiency of any document it processes or any output it produces</li>
+    <li>Substitute for the advice of a licensed attorney, which we strongly recommend for any estate matter of meaningful complexity</li>
+  </ul>
+
+  <h2>3. Accounts, Cases, and Access</h2>
+  <h3>3.1 Account Registration</h3>
+  <p>To use AcervoVista beyond the free intake assessment, you must create an account and pay the applicable per-case fee. You agree to provide accurate and complete information when creating your account and to keep that information current.</p>
+
+  <h3>3.2 Case Ownership</h3>
+  <p>Each case on AcervoVista belongs to the user who created it (the "case owner"). The case owner controls who can view or contribute to the case through the family collaboration feature. Case ownership is not transferable except with AcervoVista's written consent.</p>
+
+  <h3>3.3 Professional Accounts</h3>
+  <p>Professional accounts require credential verification — bar number, jurisdiction, and firm affiliation. By applying for a professional account, you represent and warrant that the credentials you provide are accurate and current, and that you are in good standing with the applicable licensing authority. AcervoVista reserves the right to verify credentials and to downgrade or terminate professional accounts where credentials cannot be confirmed.</p>
+  <div class="attorney-note">Confirm whether the professional tier terms need a separate section governing attorney-client privilege, confidentiality, and work product doctrine when a lawyer uses the platform in connection with client matters. This may require a separate Professional Services Addendum.</div>
+
+  <h3>3.4 Case Independence and Data Siloing</h3>
+  <p>Each case on AcervoVista is independent. No data, document, inference, or output from one case is shared with, visible to, or used to inform any other case — even if both cases concern the same decedent or the same estate. This independence is a foundational architectural principle of AcervoVista and reflects our commitment to serving each user's independent picture of their situation.</p>
+  <p>AcervoVista does not take sides between users who are parties to the same estate. If two heirs of the same estate both use AcervoVista, each user's case file is built solely from what that user provides, and is not shared with or visible to any other user.</p>
+
+  <h2>4. No Legal Advice — Scope and Limits of the Platform</h2>
+  <h3>4.1 Chronology, Not Judgment</h3>
+  <p>AcervoVista's consumer tier describes what documents show and when events happened. It does not characterize any event, transfer, disposition, or action as suspicious, fraudulent, improper, unlawful, or a cause for legal concern. Those characterizations require legal judgment and are the province of a licensed attorney, not this platform.</p>
+
+  <h3>4.2 The AI Assistant</h3>
+  <p>AcervoVista includes an AI-powered assistant powered by Anthropic's Claude API. The assistant is designed to answer questions about documents, explain what process steps mean generally, and help users understand their case file. The assistant is explicitly programmed not to provide legal conclusions, legal strategy, or characterizations of conduct.</p>
+  <p>The AI assistant is limited to 50 turns per case (the "Turn Cap"). This limit exists to manage costs and to encourage users to seek legal advice for complex questions. The Turn Cap may be increased by contacting support.</p>
+  <p>Responses from the AI assistant are generated by artificial intelligence and may contain errors, omissions, or inaccuracies. Do not rely on assistant responses as a substitute for legal advice.</p>
+  <div class="attorney-note">Confirm that the scope of the AI assistant — answering questions about documents and process, refusing legal conclusions, redirecting to lawyers — is structured to avoid unauthorized practice of law (UPL) in all jurisdictions where the platform operates. Florida Bar Rule 4-5.5 and equivalent rules in other jurisdictions apply.</div>
+
+  <h3>4.3 The Lawyer Handoff Package</h3>
+  <p>The Lawyer Handoff Package is a structured PDF export of your case file organized for a lawyer's first-day review. It is a document organization tool, not a legal brief or legal opinion. It does not constitute legal advice. The package carries a disclaimer on every page to this effect.</p>
+
+  <h3>4.4 Gap Map and Document Classification</h3>
+  <p>The gap map identifies documents typically required for estate administration in a given jurisdiction and case type. It does not constitute legal advice about what documents are required in your specific case. Document classification is performed by OCR and AI analysis. Classifications may be inaccurate. You are responsible for reviewing and correcting document classifications where they are wrong.</p>
+
+  <h2>5. Fees and Payment</h2>
+  <h3>5.1 Per-Case Pricing</h3>
+  <p>AcervoVista charges a per-case fee, not a subscription. A "case" is defined as a completed intake. The applicable fee is displayed at the time of case creation. Fees are charged in US dollars.</p>
+  <p>Current fees:</p>
+  <ul>
+    <li>Consumer tier: $20.00 per case (Early Access pricing: $10.00 per case)</li>
+    <li>Professional tier: $149.00 per case (Early Access pricing: $79.00 per case)</li>
+    <li>Lawyer Handoff Package: $29.00 per case (add-on, available on either tier)</li>
+  </ul>
+
+  <h3>5.2 Early Access Pricing</h3>
+  <p>Early Access pricing is available for the first 500 cases opened on the platform. "Opened" means intake completed. Early Access pricing closes when the 500-case cohort is filled. Case 501 pays the standard rate. Early Access pricing is not available retroactively and is not transferable.</p>
+
+  <h3>5.3 Refunds</h3>
+  <p>Because AcervoVista delivers a digital product that is immediately accessible upon payment, fees are generally non-refundable once a case is opened and the intake is completed. If you believe a charge was made in error, contact us at <a href="mailto:support@acervovista.com">support@acervovista.com</a> within 14 days of the charge and we will review the matter on a case-by-case basis.</p>
+  <div class="attorney-note">Confirm that the no-refund policy is enforceable under Florida law and in all target jurisdictions. EU consumer protection law (Consumer Rights Directive) provides a 14-day right of withdrawal for digital services; LATAM consumer protection laws vary. Consider whether a carve-out is needed for EU/EEA users.</div>
+
+  <h3>5.4 Payment Processing</h3>
+  <p>Payments are processed by Stripe, Inc. By providing payment information, you agree to Stripe's terms of service (available at stripe.com/legal). AcervoVista does not store your full payment card information. Stripe handles all payment card data in accordance with PCI-DSS standards.</p>
+
+  <h2>6. Your Content — Ownership, License, and Responsibility</h2>
+  <h3>6.1 You Own Your Content</h3>
+  <p>You retain ownership of all documents, data, and information you upload to AcervoVista ("Your Content"). By uploading content, you grant AcervoVista a limited, non-exclusive, non-transferable license to store, process, and analyze Your Content for the sole purpose of providing the services described in these Terms. We do not claim ownership of Your Content and do not use it for any purpose beyond providing the platform to you.</p>
+  <p>We do not use Your Content to train AI models. Your case data is used only to provide the platform services to you.</p>
+
+  <h3>6.2 Your Responsibilities</h3>
+  <p>You represent and warrant that:</p>
+  <ul>
+    <li>You have the right to upload the content you provide to AcervoVista</li>
+    <li>Your use of AcervoVista complies with all applicable laws</li>
+    <li>You will not upload content that is illegal, harmful, or that infringes the rights of any third party</li>
+    <li>The information you provide in the intake is accurate to the best of your knowledge</li>
+  </ul>
+
+  <h3>6.3 Accuracy of Information</h3>
+  <p>AcervoVista's outputs are only as accurate as the information you provide. AcervoVista is not responsible for outputs that are inaccurate because the input information was inaccurate or incomplete.</p>
+
+  <h2>7. Family Collaboration</h2>
+  <p>AcervoVista allows case owners to invite collaborators to view or contribute to a case. By inviting a collaborator, you acknowledge that:</p>
+  <ul>
+    <li>The collaborator will have access to the portions of your case file you grant them access to</li>
+    <li>You are responsible for the collaborators you invite and for managing their access</li>
+    <li>Collaboration is within a single case — collaborators cannot see other cases on the platform</li>
+    <li>AcervoVista does not share case information between separately created cases, even if they concern the same estate</li>
+  </ul>
+  <p>The AI assistant respects collaboration permissions. A view-only collaborator may only ask the assistant about information within their permitted view.</p>
+
+  <h2>8. Lawyer Referrals</h2>
+  <p>AcervoVista may refer you to licensed attorneys in your jurisdiction. These referrals are provided as a convenience and do not constitute an endorsement or guarantee of any referred attorney's qualifications, competence, or fitness for your matter.</p>
+  <p>The decision to engage any attorney is yours alone. AcervoVista is not a party to any attorney-client relationship that may be formed between you and a referred attorney. AcervoVista receives compensation from attorneys who are listed in the referral network.</p>
+
+  <h2>9. Prohibited Uses</h2>
+  <p>You may not use AcervoVista to:</p>
+  <ul>
+    <li>Provide legal advice to others using outputs from the platform</li>
+    <li>Circumvent, disable, or interfere with security features of the platform</li>
+    <li>Upload malicious code, viruses, or harmful content</li>
+    <li>Attempt to access another user's case file without authorization</li>
+    <li>Scrape, harvest, or systematically extract data from the platform</li>
+    <li>Misrepresent your credentials in a professional account application</li>
+    <li>Use the platform in any way that violates applicable law</li>
+  </ul>
+
+  <h2>10. Disclaimer of Warranties</h2>
+  <p class="caps">ACERVOVISTA IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, OR NON-INFRINGEMENT.</p>
+  <p class="caps">ACERVOVISTA DOES NOT WARRANT THAT: the platform will be uninterrupted, error-free, or secure; document classification or gap map outputs will be accurate or complete; the AI assistant's responses will be accurate, complete, or appropriate for your specific situation; the Lawyer Handoff Package will satisfy any legal requirement; or referred attorneys will be suitable for your matter.</p>
+  <p class="caps">YOUR USE OF ACERVOVISTA IS AT YOUR OWN RISK.</p>
+
+  <h2>11. Limitation of Liability</h2>
+  <p class="caps">TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, ACERVOVISTA SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, OR GOODWILL, ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF THE PLATFORM, EVEN IF ACERVOVISTA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+  <p class="caps">ACERVOVISTA'S TOTAL LIABILITY TO YOU FOR ANY CLAIM ARISING OUT OF OR RELATING TO THESE TERMS OR THE PLATFORM SHALL NOT EXCEED THE FEES YOU PAID TO ACERVOVISTA IN THE TWELVE MONTHS PRECEDING THE CLAIM.</p>
+
+  <h2>12. Indemnification</h2>
+  <p>You agree to indemnify, defend, and hold harmless AcervoVista and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable attorneys' fees) arising out of or in any way connected with: your use of AcervoVista; your violation of these Terms; your violation of any applicable law; Your Content; or any misrepresentation of credentials in a professional account application.</p>
+
+  <h2>13. Termination</h2>
+  <p>AcervoVista may suspend or terminate your account at any time, with or without notice, if you violate these Terms or if we determine that your use of the platform poses a risk to other users, to us, or to third parties.</p>
+  <p>You may delete your account at any time by contacting us at <a href="mailto:support@acervovista.com">support@acervovista.com</a>. Upon deletion, your case files and uploaded documents will be deleted within 30 days of account deletion, subject to any legal retention obligations. Backup copies are purged within 90 days.</p>
+  <p>Sections 4, 10, 11, and 12 survive termination of these Terms.</p>
+
+  <h2>14. Governing Law and Dispute Resolution</h2>
+  <p>These Terms are governed by the laws of the State of Florida, without regard to its conflict of law provisions. AcervoVista's principal place of business is in Miami, Florida.</p>
+  <p>Any dispute arising out of or relating to these Terms or the platform shall be resolved by binding arbitration administered by the American Arbitration Association under its Consumer Arbitration Rules, except that either party may seek injunctive relief in a court of competent jurisdiction in Miami-Dade County, Florida.</p>
+  <p class="caps">YOU AGREE TO RESOLVE DISPUTES WITH ACERVOVISTA ON AN INDIVIDUAL BASIS AND WAIVE ANY RIGHT TO PARTICIPATE IN A CLASS ACTION LAWSUIT OR CLASS-WIDE ARBITRATION.</p>
+  <div class="attorney-note">Review class action waiver and arbitration clause enforceability for LATAM users (Venezuelan and Argentine law may not recognize US arbitration agreements for consumer disputes) and for EU/EEA users (EU consumer law may prohibit mandatory arbitration). Consider a jurisdiction-specific carve-out.</div>
+
+  <h2>15. Privacy</h2>
+  <p>Your use of AcervoVista is also governed by our <a href="/privacy">Privacy Policy</a>, which is incorporated into these Terms by reference. By using AcervoVista, you consent to the data practices described in the Privacy Policy.</p>
+
+  <h2>16. Changes to These Terms</h2>
+  <p>AcervoVista reserves the right to modify these Terms at any time. We will provide notice of material changes by email or by posting a notice on the platform at least 14 days before the change takes effect. Your continued use of the platform after the effective date of any changes constitutes your acceptance of the revised Terms.</p>
+  <p>We will not apply changes retroactively to cases that were opened and paid for under a prior version of these Terms.</p>
+
+  <h2>17. Contact</h2>
+  <p>
+    AcervoVista, Inc.<br>
+    Registered Agent: Northwest Registered Agent, LLC<br>
+    7901 4th St N, Suite 300, St. Petersburg, FL 33702<br>
+    <em style="font-size:12px;color:var(--ink-light);">(This is the registered agent address for legal service of process. Do not send user correspondence here.)</em>
+  </p>
+  <p>
+    Support: <a href="mailto:support@acervovista.com">support@acervovista.com</a><br>
+    Legal: <a href="mailto:legal@acervovista.com">legal@acervovista.com</a><br>
+    Website: <a href="https://acervovista.com">acervovista.com</a>
+  </p>
+  <div class="attorney-note">Confirm the registered agent and registered address before publication. Northwest Registered Agent is a commonly used Florida registered agent service ($125/year) — confirm enrollment or substitute your actual registered agent. Add a physical business address if the company has one.</div>
+
+  <hr class="section-divider">
+
+  <h2>18. Attorney Review Notes — Remaining Items</h2>
+  <p><em>Version 2 has resolved all placeholders that could be filled without attorney input. The following items remain for attorney review. Everything else is ready for publication subject to your review.</em></p>
+  <ul>
+    <li>Arbitration and class action waiver — enforceability for LATAM and EU users (see Section 14)</li>
+    <li>Refund policy — EU Consumer Rights Directive 14-day withdrawal right (see Section 5.3)</li>
+    <li>Professional account addendum — attorney-client privilege, confidentiality, work product (see Section 3.3)</li>
+    <li>UPL analysis — confirm AI assistant scope is compliant in all operating jurisdictions (see Section 4.2)</li>
+    <li>Registered agent confirmation — confirm Northwest Registered Agent or substitute (see Section 17)</li>
+    <li>Florida business registration — confirm Articles of Incorporation filed, EIN obtained, foreign qualification in any additional states if needed</li>
+    <li>GDPR — if EU/EEA users are accepted at launch, a full GDPR addendum is required. If EU users are excluded at launch, add a geographic restriction to these Terms.</li>
+  </ul>
+
+  <p style="font-size:12px;color:var(--ink-light);margin-top:32px;font-style:italic;">AcervoVista Terms of Service v2 — Draft for Attorney Review — Not Yet in Effect — June 2026</p>
+
+</div>
+
+<footer>
+  <p class="footer-legal">
+    AcervoVista organizes estate documents and reconstructs timelines. It does not provide legal advice, legal representation, or legal strategy. Nothing on this platform should be relied upon as a substitute for advice from a licensed attorney. · © 2026 AcervoVista, Inc. ·
+    <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a>
+  </p>
+  <a href="/es" style="font-size:11px;font-family:monospace;color:var(--ink-light);letter-spacing:0.05em;">En Español</a>
+</footer>
+
+</body>
+</html>

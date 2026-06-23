@@ -2,19 +2,21 @@ import express from 'express'
 import { pool } from '../db/pool.js'
 import { computeComplexityFlags } from '../lib/complexity.js'
 import { computeGapMap } from '../lib/gapMap.js'
+import { requireAuth } from '../middleware/auth.js'
 
 export const casesRouter = express.Router()
 
-// List all cases — lightweight index for the case switcher.
-// No auth yet; in production this would be scoped to the signed-in user.
-casesRouter.get('/', async (req, res) => {
+// List cases for the signed-in user
+casesRouter.get('/', requireAuth, async (req, res) => {
   const result = await pool.query(
     `SELECT c.id, c.decedent_name, c.date_of_death, c.state_of_domicile,
             c.jurisdictions, c.has_will, c.intake_completed_at, c.closed_at,
             (SELECT h.relationship FROM heirs h WHERE h.case_id = c.id ORDER BY h.id LIMIT 1)
               AS viewer_relationship
      FROM cases c
-     ORDER BY c.intake_completed_at DESC`
+     WHERE c.user_id = $1
+     ORDER BY c.created_at DESC`,
+    [req.user.user_id]
   )
   res.json(result.rows)
 })

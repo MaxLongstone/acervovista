@@ -1,4 +1,9 @@
-const API_BASE = 'http://localhost:3001'
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+
+function authHeaders() {
+  const token = localStorage.getItem('acervovista_token')
+  return token ? { Authorization: `Bearer ${token}` } : {}
+}
 
 export async function getCaseItems(caseId) {
   const res = await fetch(`${API_BASE}/api/cases/${caseId}/items`)

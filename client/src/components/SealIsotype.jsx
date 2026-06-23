@@ -3,7 +3,7 @@
  * Used in: Nav (intake), TopBand (avatar default), TakeABreath.
  * Always rendered complete; never shown as a placeholder or "add photo" nudge.
  */
-export default function SealIsotype({ size = 32, className = '' }) {
+export default function SealIsotype({ size = 32, className = '', noStamp = false }) {
   return (
     <svg
       viewBox="0 0 80 80"
@@ -19,7 +19,7 @@ export default function SealIsotype({ size = 32, className = '' }) {
       <line x1="29" y1="28" x2="50" y2="28" stroke="#F5F0E8" strokeWidth="1.8" strokeLinecap="round" opacity="0.75" />
       <line x1="29" y1="34" x2="47" y2="34" stroke="#F5F0E8" strokeWidth="1.4" strokeLinecap="round" opacity="0.50" />
       <line x1="29" y1="40" x2="43" y2="40" stroke="#F5F0E8" strokeWidth="1.4" strokeLinecap="round" opacity="0.30" />
-      <path d="M24 49 L56 49 L56 55.5 Q56 58 53.5 58 L26.5 58 Q24 58 24 55.5 Z" fill="#C0392B" />
+      {!noStamp && <path d="M24 49 L56 49 L56 55.5 Q56 58 53.5 58 L26.5 58 Q24 58 24 55.5 Z" fill="#C0392B" />}
     </svg>
   )
 }

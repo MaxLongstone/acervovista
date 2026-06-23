@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — AcervoVista</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #0F1F38;
+  --navy-deep: #080F1C;
+  --parchment: #F5F0E8;
+  --parch-deep:#EDE5D4;
+  --parch-dark:#C8B99A;
+  --stamp:     #C0392B;
+  --ink:       #1A1A2E;
+  --ink-mid:   #4A4A6A;
+  --ink-light: #8A8AAA;
+  --present:   #1D9E75;
+  --off-white: #FAFAF8;
+  --display: 'Playfair Display', Georgia, serif;
+  --sans:    'Inter', system-ui, sans-serif;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--parchment); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--stamp); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--navy);
+  height: 56px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 64px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-wordmark { font-family: var(--display); font-size: 17px; font-weight: 700; color: var(--parchment); letter-spacing: 0.01em; }
+.nav-wordmark span { color: var(--stamp); }
+.nav-back { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--parch-dark); text-decoration: none; transition: color 150ms; }
+.nav-back:hover { color: var(--parchment); text-decoration: none; }
+
+.draft-banner {
+  background: #7a4f00;
+  color: #fff8e1;
+  text-align: center;
+  padding: 12px 24px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+.draft-banner strong { font-weight: 700; }
+
+.page-wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 100px; }
+.doc-title { font-family: var(--display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; color: var(--navy); line-height: 1.1; margin-bottom: 8px; }
+.doc-meta { font-size: 13px; color: var(--ink-light); margin-bottom: 12px; font-style: italic; }
+.doc-version-note {
+  background: var(--off-white);
+  border: 1px solid var(--parch-deep);
+  border-left: 3px solid var(--stamp);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-bottom: 48px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+.doc-version-note strong { color: var(--navy); }
+
+.core-commitment {
+  background: rgba(29,158,117,0.07);
+  border: 1px solid rgba(29,158,117,0.2);
+  border-left: 3px solid var(--present);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 20px 0;
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+.core-commitment strong { color: #14694f; }
+
+h2 { font-family: var(--display); font-size: clamp(20px, 2.5vw, 26px); font-weight: 700; color: var(--navy); margin-top: 52px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--parch-deep); line-height: 1.25; }
+h3 { font-family: var(--display); font-size: 18px; font-weight: 600; color: var(--navy); margin-top: 32px; margin-bottom: 12px; }
+p { font-size: 15px; color: var(--ink-mid); line-height: 1.85; margin-bottom: 16px; }
+ul, ol { margin: 0 0 16px 24px; }
+li { font-size: 15px; color: var(--ink-mid); line-height: 1.8; margin-bottom: 6px; }
+strong { color: var(--navy); font-weight: 600; }
+
+.attorney-note {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-left: 3px solid #f9a825;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 20px 0;
+  font-size: 13px;
+  color: #5d4037;
+  line-height: 1.65;
+}
+.attorney-note::before { content: '⚠ Attorney Review Required — '; font-weight: 700; }
+
+.provider-list { margin: 0 0 16px; list-style: none; padding: 0; }
+.provider-list li { font-size: 14px; color: var(--ink-mid); line-height: 1.8; margin-bottom: 10px; padding-left: 0; border-bottom: 1px solid var(--parch-deep); padding-bottom: 10px; }
+.provider-list li:last-child { border-bottom: none; }
+.provider-list li strong { display: block; color: var(--navy); margin-bottom: 2px; }
+
+.section-divider { border: none; border-top: 1px solid var(--parch-deep); margin: 48px 0 0; }
+
+footer {
+  background: var(--navy-deep);
+  padding: 36px 64px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.footer-legal { font-size: 12px; color: var(--ink-light); line-height: 1.6; }
+.footer-legal a { color: var(--ink-light); }
+.footer-legal a:hover { color: var(--parch-dark); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .nav { padding: 0 24px; }
+  footer { padding: 28px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/">
+    <svg viewBox="0 0 80 80" width="26" height="26" fill="none" aria-hidden="true">
+      <circle cx="40" cy="40" r="36" fill="#F5F0E8"/>
+      <rect x="24" y="20" width="32" height="38" rx="2.5" fill="#0F1F38"/>
+      <line x1="29" y1="28" x2="50" y2="28" stroke="#F5F0E8" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
+      <line x1="29" y1="34" x2="47" y2="34" stroke="#F5F0E8" stroke-width="1.4" stroke-linecap="round" opacity="0.50"/>
+      <path d="M24 49 L56 49 L56 55.5 Q56 58 53.5 58 L26.5 58 Q24 58 24 55.5 Z" fill="#C0392B"/>
+    </svg>
+    <span class="nav-wordmark">Acervo<span>Vista</span></span>
+  </a>
+  <a class="nav-back" href="/">← Back to site</a>
+</nav>
+
+<div class="draft-banner">
+  <strong>Draft — under attorney review.</strong> This document is not yet final and is not currently in effect.
+</div>
+
+<div class="page-wrap">
+
+  <h1 class="doc-title">Privacy Policy</h1>
+  <p class="doc-meta">Version 2 &nbsp;·&nbsp; Effective Date: June 20, 2026 (pending attorney review)</p>
+
+  <div class="doc-version-note">
+    <strong>Version 2 changes:</strong> Email addresses confirmed. Retention periods set (30/90 days). Anthropic API data use confirmed (no training on API data, no retention after processing). Google Cloud Vision data use confirmed (no document content retention). Legal basis for processing identified as contract performance. CCPA analysis completed (threshold not met at launch). Florida breach notification timeline added (30 days under FIPA). Items requiring attorney opinion clearly marked.
+  </div>
+
+  <h2>1. Introduction</h2>
+  <p>This Privacy Policy describes how AcervoVista, Inc. ("AcervoVista," "we," "us," or "our") collects, uses, stores, and shares information about you when you use the AcervoVista platform.</p>
+  <p>We take the privacy of estate information seriously. The documents and data you upload to AcervoVista are sensitive — they may include personal and financial information about deceased family members, living heirs, and ongoing legal matters. We have designed the platform with privacy and data independence as foundational principles.</p>
+  <div class="core-commitment">
+    <strong>Our Core Privacy Commitment:</strong> Your case file is yours. It is built from what you share with us and is not visible to, shared with, or used to inform any other user's case. We do not sell your personal information to third parties. We do not use your case data to train AI models.
+  </div>
+
+  <h2>2. Information We Collect</h2>
+  <h3>2.1 Information You Provide Directly</h3>
+  <ul>
+    <li>Account information — name, email address, and payment information</li>
+    <li>Intake information — information about the decedent, the estate, the heirs, and the assets</li>
+    <li>Uploaded documents — photographs, PDFs, Word documents, and other files you upload to your case file</li>
+    <li>AI assistant conversations — questions you ask and information you provide in conversation with the assistant</li>
+    <li>Professional credentials — bar number, jurisdiction, and firm affiliation, if you apply for a professional account</li>
+    <li>Collaborator information — names and email addresses of people you invite to collaborate on your case</li>
+  </ul>
+
+  <h3>2.2 Information We Collect Automatically</h3>
+  <ul>
+    <li>Log data — IP address, browser type, operating system, pages visited, time and date of visits</li>
+    <li>Usage data — how you interact with the platform, which features you use and how often</li>
+    <li>Device information — device type, operating system version, and unique device identifiers</li>
+    <li>Cookies — see Section 8 (Cookies) for details</li>
+  </ul>
+
+  <h3>2.3 Information From Third Parties</h3>
+  <ul>
+    <li>Payment processors — Stripe provides transaction confirmation. We do not receive or store your full card number.</li>
+    <li>OCR providers — Google Cloud Vision processes document images to extract text. Google does not retain document content after processing. See Section 5.</li>
+    <li>Professional credential verification — we may verify professional credentials against publicly available bar association records</li>
+  </ul>
+
+  <h2>3. How We Use Your Information</h2>
+  <h3>3.1 To Provide the Platform</h3>
+  <p>Our legal basis for processing your personal data is performance of our contract with you — we need your information to provide the services you have signed up for. We use your information to:</p>
+  <ul>
+    <li>Build and maintain your case file</li>
+    <li>Process documents you upload via OCR text extraction and AI classification</li>
+    <li>Generate the gap map, timeline, case summary, and Lawyer Handoff Package</li>
+    <li>Power the AI assistant's responses to your questions</li>
+    <li>Process payments via Stripe</li>
+    <li>Send transactional communications, including case confirmations, deadline alerts, and quiz complexity assessment results</li>
+    <li>Refer you to attorneys in the referral network when requested</li>
+  </ul>
+
+  <h3>3.2 To Improve the Platform</h3>
+  <p>We use aggregated and de-identified information to understand how users interact with the platform and to improve its capabilities. We do NOT use the specific contents of your case file — your documents, your family's information, or your estate details — to improve the platform's AI models.</p>
+  <p>We operate an internal feedback system in which the AI assistant flags patterns it identifies (not your personal data) for product improvement review. All such signals are de-identified before review. Corrections to the legal framework are reviewed and approved by a human before implementation.</p>
+
+  <h3>3.3 To Comply With Legal Obligations</h3>
+  <p>We may use or disclose your information as required by applicable law, court order, or legal process, including in response to lawful requests from public authorities.</p>
+
+  <h2>4. How We Share Your Information</h2>
+  <div class="core-commitment">
+    <strong>We Do Not Sell Your Information:</strong> AcervoVista does not sell, rent, or trade your personal information to any third party for their own commercial purposes. We do not share your data with advertising platforms.
+  </div>
+
+  <h3>4.1 Service Providers</h3>
+  <p>We share information with service providers who help us operate the platform. They process your information on our behalf and are bound by confidentiality obligations:</p>
+  <ul class="provider-list">
+    <li><strong>Google Cloud Vision</strong> OCR text extraction from uploaded documents. Google processes document images and returns extracted text. Google does not retain document content after processing. Google's use of data is governed by its Cloud Data Processing Addendum.</li>
+    <li><strong>Anthropic (Claude API)</strong> Powers the AI assistant and document classification. Document context is sent to the Anthropic API to generate responses. Anthropic does not train its models on API data. Anthropic's API data handling is governed by its usage policies and, for enterprise use, its Data Processing Addendum.</li>
+    <li><strong>Stripe</strong> Payment processing. Stripe handles all payment card data in accordance with PCI-DSS standards.</li>
+    <li><strong>Resend</strong> Transactional email delivery (case confirmations, complexity assessments, deadline alerts).</li>
+    <li><strong>Railway</strong> Backend hosting and database. Data is stored in Railway's hosted PostgreSQL infrastructure.</li>
+    <li><strong>Cloudflare</strong> Document storage (Cloudflare R2) and CDN/DNS services.</li>
+  </ul>
+  <div class="attorney-note">Review whether Data Processing Agreements (DPAs) are required with any of the above providers for GDPR compliance or under LATAM data protection laws. Anthropic and Google both offer DPAs for enterprise/API customers — confirm whether execution is required based on user base.</div>
+
+  <h3>4.2 Lawyer Referral Network</h3>
+  <p>When you request a lawyer referral, we may share your name, email address, jurisdiction, and a summary of your case complexity with the referred attorney to facilitate the introduction. We will notify you before sharing this information. If you choose to send a Lawyer Handoff Package to a referred attorney, the contents of that package are shared with that attorney. You control this action.</p>
+
+  <h3>4.3 Collaborators</h3>
+  <p>When you invite a collaborator to your case, the collaborator will have access to the portions of your case file you grant them access to. You control what each collaborator can see.</p>
+
+  <h3>4.4 Legal Requirements</h3>
+  <p>We may disclose your information if required to do so by law or if we believe in good faith that such disclosure is necessary to comply with a legal obligation or court order, or to protect the rights, property, or safety of AcervoVista, our users, or the public.</p>
+
+  <h3>4.5 Business Transfers</h3>
+  <p>If AcervoVista is acquired by or merged with another company, your information may be transferred as part of that transaction. We will notify you before your information is transferred and becomes subject to a different privacy policy.</p>
+
+  <h2>5. Third-Party Services — Data Processing Details</h2>
+  <h3>5.1 Google Cloud Vision</h3>
+  <p>Documents you upload are sent to Google Cloud Vision for OCR text extraction. Google processes these images and returns extracted text. Google Cloud's terms confirm that customer data submitted to Google Cloud APIs is not used to train Google's AI models, and document content is not retained after processing. Google's Cloud Data Processing Addendum governs data handling for API use.</p>
+
+  <h3>5.2 Anthropic (AI Assistant and Document Classification)</h3>
+  <p>When you use the AI assistant or when a document is classified using Layer 2 AI classification, your questions and relevant case context are sent to the Anthropic API. Anthropic's usage policies confirm that data submitted through the API is not used to train Anthropic's models. Anthropic processes data in the United States. For enterprise API customers, Anthropic offers a Data Processing Addendum.</p>
+  <div class="attorney-note">If EU/EEA users will be served at launch, execute Anthropic's DPA and confirm the legal transfer mechanism (likely Standard Contractual Clauses) before accepting EU users. Same analysis applies to Google Cloud.</div>
+
+  <h3>5.3 Cross-Border Data Transfers</h3>
+  <p>AcervoVista serves users in the United States and internationally, including users in Latin American countries. Your information may be transferred to and processed in the United States. By using AcervoVista, you acknowledge that your data will be processed in the United States and that US data protection laws may differ from those in your home country.</p>
+  <div class="attorney-note">If EU/EEA users are accepted, this section must be expanded to address GDPR transfer mechanisms — Standard Contractual Clauses or equivalent. If EU users are excluded at launch, add a geographic restriction to the Terms of Service and this section. For Argentina: Argentina's PDPA designates certain countries as adequate for data transfers; the US is not on the adequate countries list, requiring specific transfer safeguards. For Venezuela and Colombia: review applicable data protection requirements.</div>
+
+  <h2>6. Data Retention</h2>
+  <p>We retain your case file data and uploaded documents for as long as your account is active. If you delete your account:</p>
+  <ul>
+    <li>Your case files and uploaded documents will be deleted within 30 days of account deletion</li>
+    <li>Backup copies will be purged within 90 days of account deletion</li>
+    <li>Transaction records are retained for 7 years as required by applicable financial record-keeping regulations</li>
+    <li>De-identified, aggregated information derived from your use of the platform may be retained indefinitely for platform improvement purposes</li>
+  </ul>
+  <p>If we receive a legal hold notice or are involved in litigation relating to your case, we may be required to retain your data for longer than the above periods.</p>
+  <div class="attorney-note">Confirm 30-day and 90-day retention periods are technically achievable with the Railway/Cloudflare R2 infrastructure. Confirm 7-year transaction record retention against Florida tax and financial record-keeping requirements. If EU users are accepted, confirm GDPR right to erasure compliance within these timelines.</div>
+
+  <h2>7. Security</h2>
+  <p>We implement technical and organizational measures to protect your information:</p>
+  <ul>
+    <li>Encryption of data in transit using TLS 1.2 or higher</li>
+    <li>Encryption of data at rest in our hosted database and document storage</li>
+    <li>Access controls limiting who within AcervoVista can access case data</li>
+    <li>Case-level data siloing enforced at the database level — case data is isolated and cannot be accessed across case boundaries</li>
+  </ul>
+  <p>If you believe your account has been compromised, contact us immediately at <a href="mailto:security@acervovista.com">security@acervovista.com</a>.</p>
+  <p>In the event of a data breach that is likely to result in a risk to your rights, we will notify you and applicable authorities as required by law. Under the Florida Information Protection Act (FIPA), we are required to notify affected individuals within 30 days of discovery of a breach. Under GDPR (if applicable), notification to the relevant supervisory authority is required within 72 hours.</p>
+
+  <h2>8. Cookies and Tracking Technologies</h2>
+  <p>AcervoVista uses cookies and similar technologies to operate the platform. We use:</p>
+  <ul>
+    <li>Strictly necessary cookies — required for the platform to function, including session management and security. These cannot be disabled.</li>
+    <li>Analytics cookies — help us understand how users navigate the platform using de-identified analytics.</li>
+  </ul>
+  <p>We do not use advertising cookies. We do not share user data with advertising platforms. AcervoVista does not run advertisements and is not supported by advertising revenue.</p>
+
+  <h2>9. GDPR — European Users</h2>
+  <div class="attorney-note">IMPORTANT: This section must be completed before accepting EU/EEA users. If the platform will exclude EU users at launch (recommended to simplify compliance), this section should instead state that the platform is not available to users in the EU/EEA at this time. Choose one path: include or exclude EU users, then complete this section accordingly.</div>
+  <p>If you are located in the European Union or European Economic Area, the General Data Protection Regulation (GDPR) provides you with specific rights regarding your personal data. These include: the right of access; the right to rectification; the right to erasure (subject to legal retention obligations); the right to restriction of processing; the right to data portability; and the right to object to certain processing.</p>
+  <p>Our legal basis for processing your personal data is performance of our contract with you (Article 6(1)(b) GDPR) for the core platform services. For communications and platform improvement, we rely on our legitimate interests (Article 6(1)(f) GDPR).</p>
+  <p>To exercise any of these rights, contact us at <a href="mailto:privacy@acervovista.com">privacy@acervovista.com</a>. We will respond within 30 days.</p>
+
+  <h2>10. LATAM and International Users</h2>
+  <p>AcervoVista is designed to serve cross-border estate cases, including cases involving assets or heirs in Latin American countries. We recognize that users in Venezuela, Argentina, Colombia, Spain, and other countries may upload documents in Spanish or Portuguese, or documents relating to foreign legal proceedings.</p>
+  <p>By uploading documents to AcervoVista, international users acknowledge that their documents will be processed by US-based and US-contracted service providers, including Google Cloud Vision and Anthropic, and that their data may be stored in the United States.</p>
+  <div class="attorney-note">Argentina (PDPA — Law 25,326): Argentina requires that personal data transferred outside Argentina go only to countries with adequate protection or under specific transfer mechanisms. The US is not on Argentina's adequate countries list. Before accepting Argentine users, confirm whether SCCs or consent-based transfer mechanisms are required, and whether registration with the AAIP (Agencia de Acceso a la Información Pública) is needed. Colombia (Law 1581/2012): Similar cross-border transfer requirements. Spain: Subject to GDPR as EU member.</div>
+
+  <h2>11. Children's Privacy</h2>
+  <p>AcervoVista is not directed to children under the age of 18. We do not knowingly collect personal information from children under 18. Estate matters involving minor children as heirs may be discussed through the platform, but the platform is intended for use by adults only.</p>
+  <p>If you believe we have inadvertently collected information from a child under 18, contact us at <a href="mailto:privacy@acervovista.com">privacy@acervovista.com</a> and we will delete that information promptly.</p>
+  <div class="attorney-note">Confirm COPPA compliance framework. Although AcervoVista is not directed at children, estate cases may involve information about minor heirs. Confirm whether COPPA's requirements apply and whether any additional disclosures are needed.</div>
+
+  <h2>12. Your Privacy Rights</h2>
+  <h3>12.1 Access and Correction</h3>
+  <p>You may access and update your account information at any time through the platform. If you believe any information in your case file is inaccurate, you may correct it directly or contact us for assistance.</p>
+
+  <h3>12.2 Deletion</h3>
+  <p>You may delete your account and request deletion of your case files and documents at any time by contacting <a href="mailto:support@acervovista.com">support@acervovista.com</a>. See Section 6 (Data Retention) for applicable timelines.</p>
+
+  <h3>12.3 California Privacy Rights (CCPA/CPRA)</h3>
+  <p>AcervoVista does not currently meet the thresholds that would make it subject to the California Consumer Privacy Act (CCPA) as amended by the California Privacy Rights Act (CPRA). The CCPA applies to for-profit businesses that: (a) have annual gross revenues exceeding $25 million; (b) buy, sell, receive, or share for commercial purposes the personal information of 100,000 or more consumers or households; or (c) derive 50% or more of annual revenue from selling consumers' personal information. AcervoVista does not currently meet any of these thresholds.</p>
+  <p>We will monitor our status against these thresholds as the business grows and will implement required CCPA/CPRA compliance measures if and when thresholds are met.</p>
+  <p>Regardless of CCPA applicability, AcervoVista does not sell personal information. California residents may contact us at <a href="mailto:privacy@acervovista.com">privacy@acervovista.com</a> with any privacy questions.</p>
+  <div class="attorney-note">Confirm CCPA threshold analysis annually. If the platform grows to serve 100,000+ California consumers or generates $25M+ in annual revenue, full CCPA/CPRA compliance measures are required.</div>
+
+  <h2>13. Changes to This Privacy Policy</h2>
+  <p>We may update this Privacy Policy from time to time. We will notify you of material changes by email or by posting a notice on the platform at least 14 days before the change takes effect. Your continued use of the platform after the effective date of any changes constitutes your acceptance of the revised policy.</p>
+  <p>We maintain a version history of this Privacy Policy. Previous versions are available upon request at <a href="mailto:privacy@acervovista.com">privacy@acervovista.com</a>.</p>
+
+  <h2>14. Contact Us</h2>
+  <p>For questions, concerns, or requests regarding this Privacy Policy or the handling of your information:</p>
+  <p>
+    AcervoVista, Inc.<br>
+    Privacy: <a href="mailto:privacy@acervovista.com">privacy@acervovista.com</a><br>
+    Security: <a href="mailto:security@acervovista.com">security@acervovista.com</a> (for security incidents only)<br>
+    Support: <a href="mailto:support@acervovista.com">support@acervovista.com</a><br>
+    Website: <a href="https://acervovista.com">acervovista.com</a>
+  </p>
+  <div class="attorney-note">Add physical address and, if required, Data Protection Officer contact information before publication. DPO is required under GDPR if processing large-scale sensitive personal data — assess whether estate documents (which may contain health, financial, and family status data) trigger the DPO requirement.</div>
+
+  <hr class="section-divider">
+
+  <h2>15. Attorney Review Notes — Remaining Items</h2>
+  <p><em>Version 2 has resolved all placeholders that could be filled without attorney input. The following items require attorney review before publication.</em></p>
+  <ul>
+    <li>GDPR section — decide: include EU users (requires full GDPR addendum, transfer mechanisms, DPO analysis) or exclude EU users at launch (simpler, add geographic restriction)</li>
+    <li>Argentina PDPA — cross-border transfer mechanism required; AAIP registration assessment needed</li>
+    <li>Colombia Law 1581/2012 — cross-border transfer requirements</li>
+    <li>DPA execution — confirm whether DPAs with Anthropic and Google are required</li>
+    <li>DPO requirement — assess under GDPR whether estate document processing triggers mandatory DPO</li>
+    <li>COPPA — confirm compliance framework for minor heir information</li>
+    <li>Physical address — required before publication</li>
+    <li>Breach notification — FIPA 30-day and GDPR 72-hour timelines are stated; confirm both are achievable with current infrastructure and incident response plan</li>
+  </ul>
+
+  <p style="font-size:12px;color:var(--ink-light);margin-top:32px;font-style:italic;">AcervoVista Privacy Policy v2 — Draft for Attorney Review — Not Yet in Effect — June 2026</p>
+
+</div>
+
+<footer>
+  <p class="footer-legal">
+    AcervoVista organizes estate documents and reconstructs timelines. It does not provide legal advice, legal representation, or legal strategy. Nothing on this platform should be relied upon as a substitute for advice from a licensed attorney. · © 2026 AcervoVista, Inc. ·
+    <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a>
+  </p>
+  <a href="/es" style="font-size:11px;font-family:monospace;color:var(--ink-light);letter-spacing:0.05em;">En Español</a>
+</footer>
+
+</body>
+</html>
