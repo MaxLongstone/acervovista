@@ -13,7 +13,7 @@ import CheckoutPage from './pages/CheckoutPage'
 import ProtectedRoute from './components/ProtectedRoute'
 
 const CASE_ID_KEY = 'acervovista_case_id'
-const API = 'http://localhost:3001'
+const API = import.meta.env.VITE_API_URL || 'http://localhost:3001'
 
 // Renders the dashboard — auto-recovers caseId from API for paid users whose localStorage was cleared
 function DashboardShell({ caseId, setCaseId, pageKey, onSwitchCase }) {
