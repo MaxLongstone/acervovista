@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import SealIsotype from '../components/SealIsotype'
 import { COUNTRIES } from '../data/countries'
 
-const API = 'http://localhost:3001'
+const API = import.meta.env.VITE_API_URL || 'http://localhost:3001'
 
 const NON_LATAM = new Set(['US', 'CA', 'GB', 'AU'])
 
