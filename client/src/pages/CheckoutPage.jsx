@@ -31,6 +31,25 @@ export default function CheckoutPage() {
   const [loading, setLoading]               = useState(false)
   const [error, setError]                   = useState(null)
 
+  async function sandboxBypass() {
+    setError(null)
+    setLoading(true)
+    try {
+      const res = await fetch(`${API}/api/checkout/sandbox-bypass`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` },
+      })
+      const data = await res.json()
+      if (!res.ok) { setError(data.error || 'Bypass failed'); return }
+      localStorage.setItem('acervovista_case_id', data.caseId)
+      window.location.href = '/dashboard'
+    } catch {
+      setError('Bypass failed')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   async function goToStripe(plan) {
     setSelectedPlan(plan)
     setError(null)
@@ -163,6 +182,18 @@ export default function CheckoutPage() {
           {error && (
             <p className="text-xs text-stamp text-center" role="alert">{error}</p>
           )}
+
+          {/* Sandbox bypass — only shown when Stripe is not configured */}
+          <div className="mt-6 pt-6 border-t border-parch-deep text-center">
+            <p className="text-xs text-ink-light mb-3">Sandbox mode — Stripe not configured</p>
+            <button
+              onClick={sandboxBypass}
+              disabled={loading}
+              className="text-sm text-ink-mid underline hover:text-navy disabled:opacity-40"
+            >
+              Skip payment and open sandbox case →
+            </button>
+          </div>
         </div>
       </div>
     </div>

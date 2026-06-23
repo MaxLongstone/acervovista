@@ -59,3 +59,33 @@ checkoutRouter.post('/create-session', requireAuth, async (req, res) => {
 
   res.json({ url: session.url })
 })
+
+// POST /api/checkout/sandbox-bypass
+// Grants consumer tier directly — only works when STRIPE_SECRET_KEY is not set (sandbox only)
+checkoutRouter.post('/sandbox-bypass', requireAuth, async (req, res) => {
+  if (process.env.STRIPE_SECRET_KEY) {
+    return res.status(403).json({ error: 'Not available in production' })
+  }
+
+  const client = await pool.connect()
+  try {
+    await client.query('BEGIN')
+    await client.query(
+      `UPDATE users SET tier = 'consumer' WHERE id = $1`,
+      [req.user.user_id]
+    )
+    const caseResult = await client.query(
+      `INSERT INTO cases (user_id, decedent_name, handoff_package_included, plan)
+       VALUES ($1, '', false, 'consumer') RETURNING id`,
+      [req.user.user_id]
+    )
+    await client.query('COMMIT')
+    res.json({ caseId: caseResult.rows[0].id })
+  } catch (err) {
+    await client.query('ROLLBACK')
+    console.error('Sandbox bypass error:', err)
+    res.status(500).json({ error: 'Bypass failed' })
+  } finally {
+    client.release()
+  }
+})
